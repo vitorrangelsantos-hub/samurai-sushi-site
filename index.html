@@ -1,172 +1,1421 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Samurai Sushi - A arte milenar do sushi em cada peça. Restaurante japonês premium com os melhores sushis, sashimis e pratos da culinária japonesa.">
-  <meta name="theme-color" content="#0a0a0a">
-  
-  <title>Samurai Sushi | Restaurante Japonês Premium</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- ===== HEADER ===== -->
-  <header>
-    <nav>
-      <a href="#" class="logo">
-        <span>🏯</span> Samurai Sushi
-      </a>
-      
-      <ul class="nav-links">
-        <li><a href="#cardapio">Cardápio</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Samurai Sushi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Samurai Sushi, culinária japonesa no Sudoeste, Brasília. Sequência Itamae em sete etapas, cardápio, reservas e como chegar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600&family=Shippori+Mincho:wght@400;500&display=swap">
+<style>
+  /* Layout: hero de filme controlado pelo scroll; seções editoriais alternando papel e tinta, texto à esquerda,
+     imagem grande à direita, títulos em serifa caixa-alta, rótulos no laranja da marca, japonês na vertical como textura.
+     Identidade conforme o conceito editorial aprovado (referencias/site/conceito-editorial-v2.webp). */
+  :root {
+    --tinta: #0e0d09;       /* preto quente das seções escuras */
+    --papel: #f0e9de;       /* papel creme das seções claras */
+    --papel-2: #e3dac9;     /* creme mais fundo, faixas e miniaturas */
+    --cobre: #ff6a00;       /* laranja da marca: rótulos e detalhes */
+    --cobre-claro: #ff6a00; /* laranja da marca sobre o preto */
+    --texto-papel: #26201a; /* texto sobre o papel */
+    --texto-tinta: #f1ebe2; /* texto sobre o preto */
+    --cinza-papel: #6f665b;
+    --cinza-tinta: #a39b90;
+    --fio-papel: rgba(38, 32, 26, 0.16);
+    --fio-tinta: rgba(241, 235, 226, 0.16);
+    --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+    --ui: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(24px, 7vw, 120px);  /* margem lateral generosa */
+    color-scheme: dark;
+  }
+  html { background: var(--tinta); scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { background: var(--tinta); color: var(--texto-tinta); font-family: var(--display); font-size: 18px; line-height: 1.55; }
+  /* Transição entre seções: a rolagem nunca para; a seção que sai anda mais devagar e escorrega por baixo da seguinte, que entra translúcida. */
+  #pilha { position: relative; z-index: 1; isolation: isolate; }
+  #pilha.pilha-on > .camada { position: relative; }
+  .veu { position: absolute; inset: 0; z-index: 6; background: #050403; opacity: 0; pointer-events: none; }
+  /* Ao entrar, o fundo da camada é vidro fosco: deixa ver a anterior desfocada e fica sólido quando cobre a tela (--in vai de 0 a 1). */
+  #pilha.pilha-on > .entrando.papel, #pilha.pilha-on > .entrando.contato { background: rgb(240 233 222 / calc(.38 + .62 * var(--in))); }
+  #pilha.pilha-on > .entrando.tinta, #pilha.pilha-on > .entrando.barca, #pilha.pilha-on > .entrando.foot { background: rgb(14 13 9 / calc(.38 + .62 * var(--in))); }
+  #pilha.pilha-on > .entrando { -webkit-backdrop-filter: blur(calc((1 - var(--in)) * 18px)); backdrop-filter: blur(calc((1 - var(--in)) * 18px)); }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--tinta); }
+  a { color: inherit; }
+  :focus-visible { outline: 1px solid var(--cobre-claro); outline-offset: 4px; }
+  .label { font-family: var(--ui); font-size: 10.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; }
+
+  /* Barra */
+  .bar {
+    position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 5;
+    display: flex; align-items: center; gap: 28px;
+    padding-block: 18px;
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+    background: linear-gradient(rgba(14,13,9,.6), rgba(14,13,9,0)); transition: background-color .4s;
+  }
+  .bar.solid { background: rgba(14, 13, 9, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  /* Na capa a marca grande já está na tela: a logo do menu só aparece quando a barra fica sólida. */
+  .bar .mark { transition: opacity .5s ease; }
+  .bar:not(.solid) .mark { opacity: 0; pointer-events: none; }
+  .mark { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--texto-tinta); margin-right: auto; }
+  .mark .sym { display: block; width: 24px; height: auto; }
+  .mark .word { display: block; width: 74px; height: auto; }
+  .mark .name { font-family: var(--display); font-size: 14px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .nav { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  .nav a { font-family: var(--ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--cinza-tinta); transition: color .2s; }
+  .nav a:hover { color: var(--texto-tinta); }
+  .btn {
+    font-family: var(--ui); font-size: 10.5px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+    color: currentColor; background: transparent; text-decoration: none; white-space: nowrap;
+    border: 1px solid currentColor; padding: 12px 18px; display: inline-flex; gap: 12px; align-items: center; transition: background-color .2s, color .2s;
+  }
+  .tinta .btn, .bar .btn, .chapter .btn { color: var(--texto-tinta); }
+  .btn:hover, .btn:focus-visible { background: var(--texto-tinta); color: var(--tinta); }
+  .papel .btn:hover, .papel .btn:focus-visible { background: var(--texto-papel); color: var(--papel); }
+  .arrow::after { content: "→"; letter-spacing: 0; font-family: var(--ui); transition: transform .2s; }
+  .arrow:hover::after { transform: translateX(4px); }
+  .link { font-family: var(--ui); font-size: 10.5px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; display: inline-flex; gap: 12px; align-items: center; }
+  .menu-toggle { display: none; background: none; border: 0; padding: 8px 0; color: var(--texto-tinta); cursor: pointer; }
+  .menu-toggle i { display: block; width: 22px; height: 1px; background: currentColor; box-shadow: 0 6px 0 currentColor; margin-bottom: 6px; }
+  [hidden] { display: none !important; }
+  .overlay { position: fixed; inset: 0; z-index: 8; background: var(--tinta); display: grid; place-content: center; text-align: center; gap: 6px; padding: 24px; }
+  .overlay a { font-family: var(--display); font-size: 34px; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; color: var(--texto-tinta); line-height: 1.3; }
+  .overlay .close { position: absolute; top: max(20px, env(safe-area-inset-top, 0px)); right: max(24px, env(safe-area-inset-right, 0px)); background: none; border: 0; color: var(--cinza-tinta); cursor: pointer; padding: 12px 0; }
+
+  /* Hero */
+  #hero { position: relative; height: 340vh; }
+  #stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--tinta); }
+  #stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #stage::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 50% 60% at 18% 54%, rgba(8,7,5,.55) 0%, rgba(8,7,5,.2) 50%, rgba(8,7,5,0) 78%), linear-gradient(to right, rgba(10,9,6,.72) 0%, rgba(10,9,6,.45) 30%, rgba(10,9,6,.12) 50%, rgba(10,9,6,0) 60%), linear-gradient(to bottom, rgba(14,13,9,.45) 0%, rgba(14,13,9,0) 22%); }
+  /* Sombra no lettering do hero, para ler sobre a foto. */
+  .chapter h1, .chapter p, .chapter .label, #stage .vert { text-shadow: 0 2px 22px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.55); }
+  #load-status { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; color: var(--cinza-tinta); }
+  .chapter { position: absolute; z-index: 3; inset: 0 auto 0 max(var(--gutter), env(safe-area-inset-left, 0px)); width: min(30rem, calc(100% - 2 * var(--gutter))); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; pointer-events: none; }
+  .chapter .label { color: var(--cinza-tinta); margin: 0 0 22px; }
+  .chapter h1, .chapter h2 { font-family: var(--display); font-weight: 600; text-transform: uppercase; text-wrap: balance; font-size: clamp(34px, 4.6vw, 62px); line-height: 1.04; letter-spacing: 0.02em; margin: 0 0 22px; }
+  .chapter p { color: var(--cinza-tinta); margin: 0 0 30px; max-width: 22rem; }
+  /* Título da capa: a própria logo escrita, para o nome Samurai Sushi ser o destaque. */
+  .marca-hero { margin: 4px 0 0; line-height: 0; }
+  /* A logo da capa se desenha da esquerda para a direita quando a cortina da abertura sobe. */
+  .js-marca .marca-hero img { clip-path: inset(-25% 100% -25% -25%); }
+  .js-marca.abriu .marca-hero img { clip-path: inset(-25% -25% -25% -25%); transition: clip-path 1.2s cubic-bezier(.65,0,.35,1) .45s; }
+  .chapter > .label::before { content: ""; display: inline-block; width: 28px; height: 1px; margin-right: 14px; vertical-align: middle; background: var(--cobre); }
+  /* Reserva centralizada sob a logo; aparece depois que a logo termina de se revelar. */
+  .marca-bloco { display: flex; flex-direction: column; align-items: center; width: max-content; max-width: 100%; }
+  .chapter .hero-reserva { margin-top: 56px; background: #000; color: var(--cobre); border-color: var(--cobre); box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+  .chapter .hero-reserva:hover, .chapter .hero-reserva:focus-visible { background: var(--cobre); color: #000; }
+  .js-marca .hero-reserva { translate: 0 10px; transition: visibility 0s 1.5s, translate .9s cubic-bezier(.2,.7,.2,1) 1.5s, background-color .2s, color .2s; }
+  .js-marca:not(.abriu) .hero-reserva { visibility: hidden; }
+  .js-marca.abriu .hero-reserva { translate: 0 0; }
+  @media (max-width: 760px) { .marca-bloco { width: 100%; } .chapter .hero-reserva { margin-top: 26px; } }
+  .marca-hero img { display: block; width: clamp(380px, 44vw, 680px); height: auto; filter: drop-shadow(0 6px 26px rgba(0,0,0,.65)); }
+  @media (max-width: 760px) { .marca-hero { margin-bottom: 18px; } .marca-hero img { width: 62vw; margin: 0 auto; }
+    /* No celular a marca fica centralizada, com um fio laranja de cada lado do rótulo. */
+    .chapter { align-items: center; text-align: center; }
+    .chapter > .label { white-space: nowrap; letter-spacing: 0.2em; }
+    .chapter > .label::before { width: 18px; margin-right: 10px; }
+    .chapter > .label::after { content: ""; display: inline-block; width: 18px; height: 1px; margin-left: 10px; vertical-align: middle; background: var(--cobre); } }
+  .chapter .link, .chapter .btn { pointer-events: auto; }
+  .bar .btn { background: #000; color: var(--cobre); border-color: var(--cobre); }
+  .bar .btn { font-size: 9px; letter-spacing: 0.2em; padding: 8px 13px; }
+  .bar .btn:hover, .bar .btn:focus-visible { background: var(--cobre); color: #000; }
+  .chapter .build span { display: block; }
+  .vert { position: absolute; z-index: 3; writing-mode: vertical-rl; font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.35em; line-height: 2; opacity: .55; }
+  #stage .vert { top: 16vh; right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+  .scroll-cue { position: absolute; z-index: 3; left: max(var(--gutter), env(safe-area-inset-left, 0px)); bottom: max(28px, calc(env(safe-area-inset-bottom, 0px) + 20px)); display: flex; align-items: center; gap: 12px; color: var(--cinza-tinta); }
+  .scroll-cue::before { content: ""; width: 20px; height: 20px; border: 1px solid currentColor; border-radius: 50%; box-sizing: border-box; background: radial-gradient(circle, currentColor 2px, transparent 2.5px); }
+  .meter { display: none; }
+  /* Abertura: a logo aparece sobre o preto enquanto os quadros do hero carregam (a linha laranja é o carregamento); depois a cortina sobe. */
+  #abertura { position: fixed; inset: 0; z-index: 30; background: var(--tinta); display: grid; place-content: center; justify-items: center; gap: 24px; clip-path: inset(0 0 0 0); transition: clip-path 1.2s cubic-bezier(.76,0,.24,1); }
+  #abertura.sai { clip-path: inset(0 0 100% 0); }
+  #abertura::before { content: ""; position: absolute; left: 50%; top: 50%; width: 70vmin; height: 70vmin; transform: translate(-50%, -58%); background: radial-gradient(circle, rgba(255,106,0,.15), rgba(255,106,0,0) 60%); opacity: 0; animation: ab-brilho 2.6s ease .2s forwards; pointer-events: none; }
+  .ab-sym { position: relative; width: clamp(64px, 8vw, 96px); height: auto; opacity: 0; filter: blur(10px); transform: scale(.9); animation: ab-sym 1.1s cubic-bezier(.2,.7,.2,1) .15s forwards; }
+  .ab-word { position: relative; width: clamp(140px, 15vw, 190px); height: auto; clip-path: inset(0 100% 0 0); animation: ab-word 1s cubic-bezier(.65,0,.35,1) .8s forwards; }
+  .ab-linha { position: relative; width: clamp(140px, 15vw, 190px); height: 1px; margin-top: 6px; background: rgba(241,235,226,.12); overflow: hidden; opacity: 0; animation: ab-fade .6s ease 1.3s forwards; }
+  .ab-linha i { position: absolute; inset: 0; background: var(--cobre); transform-origin: left; transform: scaleX(var(--p, 0)); transition: transform .5s ease; }
+  #abertura.sai > * { opacity: 0 !important; transform: translateY(-16px) !important; transition: opacity .45s ease, transform .6s ease; }
+  @keyframes ab-sym { to { opacity: 1; filter: none; transform: none; } }
+  @keyframes ab-word { to { clip-path: inset(0 0 0 0); } }
+  @keyframes ab-fade { to { opacity: 1; } }
+  @keyframes ab-brilho { 45% { opacity: 1; } to { opacity: .55; } }
+  body:has(#abertura) { overflow: hidden; }
+  @media (prefers-reduced-motion: reduce) {
+    #abertura { transition: opacity .4s ease; } #abertura.sai { clip-path: none; opacity: 0; }
+    #abertura::before, .ab-sym, .ab-word, .ab-linha { animation: none; opacity: 1; filter: none; transform: none; clip-path: none; }
+  }
+
+  /* Pé do hero: aparece com o botão de reserva. */
+  .hero-base { position: absolute; z-index: 3; left: max(var(--gutter), env(safe-area-inset-left, 0px)); right: max(var(--gutter), env(safe-area-inset-right, 0px)); bottom: max(26px, calc(env(safe-area-inset-bottom, 0px) + 18px)); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 10px 24px; pointer-events: none; opacity: 0; text-shadow: 0 1px 12px rgba(0,0,0,.7); }
+  .hero-base a { pointer-events: auto; text-decoration: none; }
+  .hb-jp { display: none; grid-column: 1 / -1; margin: 0; font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-size: 13px; letter-spacing: 0.3em; color: var(--cobre); }
+  /* Selo das avaliações, logo abaixo do botão de reserva. */
+  .hb-desce { grid-column: 1 / -1; justify-self: center; margin-bottom: clamp(18px, 4vh, 44px); display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--cinza-tinta); }
+  .hb-desce i { position: relative; width: 1px; height: 34px; background: rgba(241,235,226,.22); overflow: hidden; }
+  .hb-desce i::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--cobre); animation: desce 2.4s cubic-bezier(.6,0,.4,1) infinite; }
+  @keyframes desce { to { top: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .hb-desce i::after { animation: none; top: 30%; } }
+
+  /* Seções */
+  .sec { scroll-margin-top: 64px; position: relative; padding-block: clamp(56px, 8vh, 104px); padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+  .papel { background: var(--papel); color: var(--texto-papel); }
+  .tinta { background: var(--tinta); color: var(--texto-tinta); }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .eyebrow { color: var(--cobre); margin: 0 0 18px; font-weight: 600; }
+  /* Rótulos laranja (seções, reserva, endereço, etapa) maiores que os rótulos comuns. */
+  .eyebrow, .booking-title, .where-info dt, .seq-detail .label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.24em; }
+  @media (max-width: 760px) { .eyebrow, .booking-title, .where-info dt, .seq-detail .label { font-size: 11.5px; } }
+  .tinta .eyebrow { color: var(--cobre-claro); }
+  .title { font-family: var(--display); font-weight: 600; text-transform: uppercase; text-wrap: balance; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.04; letter-spacing: 0.02em; margin: 0 0 22px; }
+  .lede { max-width: 25rem; margin: 0 0 30px; color: var(--cinza-papel); font-weight: 500; }
+  .tinta .lede { color: var(--cinza-tinta); }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 7vw, 110px); align-items: center; }
+  .frame { margin: 0; overflow: hidden; }
+  .frame img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .frame:hover img { transform: scale(1.03); }
+  .sec .vert { top: clamp(96px, 15vh, 180px); right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+
+  /* Cardápio */
+  #cardapio .split { align-items: start; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  #cardapio .wrap > div:first-child { padding-top: 2vh; }
+  .menu { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid var(--fio-papel); counter-reset: none; }
+  .menu a { position: relative; display: grid; grid-template-columns: 4.4em minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--fio-papel); text-decoration: none; transition: padding-left .45s cubic-bezier(.2,.7,.2,1); }
+  .menu .jp { font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-size: 15px; color: var(--cobre); letter-spacing: 0.04em; }
+  .menu h3 { font-family: var(--display); font-weight: 500; font-size: clamp(20px, 1.8vw, 24px); text-transform: uppercase; letter-spacing: 0.12em; margin: 0; line-height: 1.15; }
+  .menu p { margin: 4px 0 0; font-size: 15px; font-style: italic; color: var(--cinza-papel); }
+  .menu a::after { content: "→"; font-family: var(--ui); font-size: 12px; color: var(--cobre); opacity: 0; transform: translateX(-8px); transition: opacity .3s, transform .3s; }
+  .menu a::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: var(--cobre); transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .menu a:hover, .menu a:focus-visible, .menu a.is-active { padding-left: 10px; }
+  .menu a:hover::after, .menu a:focus-visible::after, .menu a.is-active::after { opacity: 1; transform: none; }
+  .menu a:hover::before, .menu a:focus-visible::before, .menu a.is-active::before { transform: scaleX(1); }
+  .menu-frame { position: sticky; top: 96px; aspect-ratio: 4 / 5; }
+  .menu-frame .menu-img { position: absolute; inset: 0; aspect-ratio: auto; opacity: 0; transform: scale(1.04); transition: opacity .7s ease, transform 1.6s cubic-bezier(.2,.7,.2,1); }
+  .menu-frame .menu-img.is-on { opacity: 1; transform: scale(1); }
+  .menu-frame:hover img { transform: none; }
+  html[lang="ja"] .menu .jp { visibility: hidden; }
+
+  /* Sequência Itamae */
+  .steps { list-style: none; margin: 64px 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0 18px; }
+  .steps li { padding-top: 0; }
+  .steps .n { font-family: var(--ui); font-size: 11px; color: var(--texto-tinta); }
+  .steps b { display: block; margin-top: 4px; font-family: var(--ui); font-size: 9.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cinza-tinta); }
+  .steps li::after { content: ""; display: block; height: 1px; margin-top: 16px; background: var(--fio-tinta); }
+  .steps li:first-child::after { background: linear-gradient(to right, var(--cobre-claro) 60%, var(--fio-tinta) 60%); }
+
+  /* Galeria */
+  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: clamp(140px, 17vw, 230px); gap: 10px; margin-top: 44px; }
+  .gallery .frame img { aspect-ratio: auto; }
+  .gallery .tall { grid-row: span 2; }
+
+  /* Barca: faixa de ponta a ponta */
+  .barca { position: relative; background: var(--tinta); color: var(--texto-tinta); }
+  .barca .frame img { height: auto; aspect-ratio: 21 / 9; min-height: 420px; object-position: 80% 60%; }
+  .barca::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, rgba(14,13,9,.94) 0%, rgba(14,13,9,.86) 30%, rgba(14,13,9,.35) 52%, rgba(14,13,9,0) 68%); }
+  .barca-copy { position: absolute; z-index: 1; left: max(var(--gutter), env(safe-area-inset-left, 0px)); top: 0; bottom: 0; width: min(28rem, calc(100% - 2 * var(--gutter))); display: flex; flex-direction: column; justify-content: center; }
+  .barca-copy .eyebrow { color: var(--cobre-claro); }
+
+  /* Contato */
+  .contact .place { display: flex; gap: 14px; align-items: flex-start; margin: 0 0 32px; color: var(--cinza-papel); line-height: 1.4; }
+  .contact .place svg { flex: none; margin-top: 3px; }
+  .contact .place strong { display: block; font-weight: 400; color: var(--texto-papel); }
+
+  /* Rodapé */
+  .foot { background: var(--tinta); border-top: 1px solid var(--fio-tinta); padding-block: 28px; padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+  .foot .wrap { display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: center; justify-content: space-between; }
+  .foot .note { font-family: var(--ui); font-size: 12px; letter-spacing: 0.06em; color: #b9b0a4; }
+
+
+  /* Idiomas */
+  .lang { display: flex; gap: 2px; align-items: center; }
+  .lang button { background: none; border: 0; padding: 8px 7px; cursor: pointer; font-family: var(--ui); font-size: 10px; letter-spacing: 0.16em; color: var(--cinza-tinta); transition: color .2s; }
+  .lang button[lang="ja"] { letter-spacing: 0.06em; font-family: "Shippori Mincho", var(--ui); font-size: 11px; }
+  .lang button:hover { color: var(--texto-tinta); }
+  .lang button[aria-pressed="true"] { color: var(--texto-tinta); box-shadow: inset 0 -1px 0 var(--cobre-claro); }
+  .lang-overlay { justify-content: center; margin-top: 28px; }
+  .lang-overlay button { font-size: 12px; padding: 10px 12px; }
+  .nav a { position: relative; }
+  .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--cobre-claro); transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
+  .nav a:hover::after { transform: scaleX(1); }
+
+  /* Japonês: serifa mincho, sem caixa-alta forçada */
+  :lang(ja) body, html[lang="ja"] body { font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif; }
+  html[lang="ja"] .title, html[lang="ja"] .chapter h1, html[lang="ja"] .menu h3 { font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-weight: 400; letter-spacing: 0.08em; }
+  html[lang="ja"] .title { font-size: clamp(28px, 3.2vw, 44px); line-height: 1.35; }
+  html[lang="ja"] .chapter h1 { font-size: clamp(30px, 3.8vw, 52px); line-height: 1.3; }
+  html[lang="ja"] .lede, html[lang="ja"] .chapter p { line-height: 1.9; font-size: 16px; }
+
+  /* Textura: grão de filme muito sutil sobre tudo */
+  body::after { content: ""; position: fixed; inset: 0; z-index: 20; pointer-events: none; opacity: .06; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  @media (max-width: 1000px) {
+    .nav, .bar > .lang { display: none; }
+    .menu-toggle { display: block; order: -1; }
+    .mark { margin: 0 auto 0 0; }
+    .split, #cardapio .split { grid-template-columns: minmax(0, 1fr); }
+    .menu-frame { position: relative; top: 0; order: -1; }
+    .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 26px; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 38vw; }
+    .vert { display: none; }
+  }
+  @media (max-width: 640px) {
+    .bar { padding-block: 12px; gap: 16px; }
+    .mark .word { width: 66px; }
+    .bar .btn { padding: 7px 10px; }
+    .chapter { justify-content: flex-end; padding-bottom: max(236px, calc(env(safe-area-inset-bottom, 0px) + 226px)); }
+    .hb-desce span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .hb-desce i { height: 40px; }
+    #stage::after { background: radial-gradient(ellipse 110% 50% at 25% 80%, rgba(8,7,5,.78) 0%, rgba(8,7,5,0) 75%), linear-gradient(to top, rgba(10,9,6,.97) 0%, rgba(10,9,6,.85) 40%, rgba(10,9,6,.4) 56%, rgba(10,9,6,0) 68%); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .barca .frame img { aspect-ratio: 4 / 3; min-height: 0; object-position: 76% 55%; }
+    .barca::after { display: none; }
+    .barca-copy { position: static; width: auto; padding: 28px var(--gutter) 44px; }
+  }
+
+
+  /* Refinos */
+  ::selection { background: var(--cobre); color: var(--tinta); }
+  .btn:hover, .btn:focus-visible, .papel .btn:hover, .papel .btn:focus-visible, .booking .btn:hover { background: var(--cobre); border-color: var(--cobre); color: var(--tinta); }
+  .nav a.is-current { color: var(--texto-tinta); }
+  .nav a.is-current::after { transform: scaleX(1); background: var(--cobre); }
+  .hero-progress { position: absolute; z-index: 4; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--cobre); transform-origin: left; transform: scaleX(0); }
+  .link { transition: color .25s; } .link:hover { color: var(--cobre); }
+  .settle { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .settle.pre { transform: translateY(28px); }
+  @media (prefers-reduced-motion: reduce) { .settle.pre { transform: none; } }
+
+
+  /* Avaliações do Google */
+  .reviews { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .rev-score { display: grid; gap: 6px; margin: 8px 0 30px; }
+  .rev-avg { font-family: var(--display); font-weight: 300; font-size: clamp(56px, 6vw, 88px); line-height: 1; }
+  .rev-stars { position: relative; display: inline-block; width: max-content; justify-self: start; align-self: start; color: rgba(38,32,26,.16); letter-spacing: 0.2em; font-size: 15px; line-height: 1; }
+  .rev-stars::before { content: "★★★★★"; }
+  .rev-stars i { position: absolute; inset: 0 auto 0 0; width: 0; overflow: hidden; white-space: nowrap; color: var(--cobre); font-style: normal; }
+  .rev-stars i::before { content: "★★★★★"; }
+  .rev-total { font-family: var(--ui); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cinza-tinta); }
+  .rev-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .rev-card { margin: 0; padding: 30px 28px 26px; border: 1px solid var(--fio-tinta); display: grid; gap: 18px; align-content: start; }
+  .rev-card .stars { color: var(--cobre); letter-spacing: 0.2em; font-size: 13px; }
+  .rev-card blockquote { margin: 0; font-family: var(--display); font-style: italic; font-size: 19px; line-height: 1.5; color: var(--texto-tinta); }
+  .rev-card figcaption { display: flex; justify-content: space-between; gap: 12px; font-family: var(--ui); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cinza-tinta); }
+  @media (max-width: 1000px) { .reviews, .rev-list { grid-template-columns: minmax(0, 1fr); } }
+
+
+  /* Onde estamos */
+  .where { display: block; max-width: 1240px; }
+  .where > div { max-width: 40rem; }
+  .where-info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 8px 0 36px; padding-top: 24px; border-top: 1px solid var(--fio-tinta); }
+  .where-info dt { color: var(--cobre); margin-bottom: 8px; }
+  .where-info dd { margin: 0; color: var(--texto-tinta); line-height: 1.5; }
+  .where-actions { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; }
+
+  .where-foto { margin: 32px 0 0; }
+  .where .where-foto img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 55%; }
+  @media (max-width: 760px) { .where .where-foto img { aspect-ratio: 4 / 5; object-position: 50% 62%; } }
+  .where-cap { position: absolute; left: 18px; bottom: 14px; color: var(--cinza-tinta); }
+  @media (max-width: 1000px) { .where { grid-template-columns: minmax(0, 1fr); } }
+
+
+  /* Avaliações em carrossel (um cartão, desliza para o lado) */
+  #avaliacoes .rev-total { color: var(--cinza-papel); }
+  /* Avaliações: nota em destaque no topo e os depoimentos lado a lado em cartões com foto. */
+  .rev-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 56px; margin-bottom: clamp(28px, 4vh, 44px); }
+  .rev-top .title { margin: 0; max-width: 11em; }
+  /* Subtítulo curto em itálico logo abaixo do título (galeria). */
+  .subtitulo { margin: -8px 0 28px; font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(20px, 2vw, 28px); color: var(--cinza-tinta); }
+  .papel .subtitulo, .contato .subtitulo { color: var(--cinza-papel); }
+  .seq-head .subtitulo, .rev-top .subtitulo { margin-bottom: 0; }
+  #avaliacoes .rev-score { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto auto; column-gap: 20px; row-gap: 6px; align-items: center; margin: 0; }
+  #avaliacoes .rev-score .rev-avg { grid-row: 1 / span 3; font-weight: 500; }
+  #avaliacoes .rev-score .link { margin-top: 4px; }
+  .rev-grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .rev-cartao { display: flex; flex-direction: column; margin: 0; background: #f6f0e7; border: 1px solid var(--fio-papel); }
+  .rev-foto { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; }
+  .rev-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .rev-corpo { display: flex; flex-direction: column; gap: 14px; padding: 20px 22px 24px; flex: 1; }
+  .rev-autor { display: flex; align-items: center; gap: 12px; }
+  .rev-avatar { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #fff; font-family: var(--ui); font-size: 15px; font-weight: 600; }
+  .rev-autor b { display: block; font-family: var(--ui); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--texto-papel); }
+  .rev-autor small { display: block; margin-top: 2px; font-family: var(--ui); font-size: 11px; color: var(--cinza-papel); }
+  .rev-autor svg { margin-left: auto; flex: none; color: var(--cinza-papel); }
+  .rev-cartao .stars { color: var(--cobre); letter-spacing: 0.2em; font-size: 13px; }
+  .rev-cartao blockquote { margin: 0; font-family: var(--display); font-style: italic; font-size: 17px; line-height: 1.55; color: var(--texto-papel); }
+  @media (max-width: 1100px) { .rev-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) {
+    .rev-grade { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-right: calc(-1 * var(--gutter)); padding-right: var(--gutter); }
+    .rev-grade::-webkit-scrollbar { display: none; }
+    .rev-cartao { scroll-snap-align: start; }
+  }
+  /* Avaliações mais compactas */
+  #avaliacoes.sec { padding-top: clamp(56px, 8vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); }
+  #avaliacoes .title { font-size: clamp(30px, 3.2vw, 44px); }
+  #avaliacoes .rev-top { margin-bottom: 24px; }
+  #avaliacoes .rev-grade { gap: 14px; }
+  #avaliacoes .rev-foto { display: none; }
+  #avaliacoes .rev-corpo { gap: 10px; padding: 14px 16px 16px; }
+  #avaliacoes .rev-cartao blockquote { font-size: 15.5px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  #avaliacoes .rev-avatar { width: 32px; height: 32px; font-size: 13px; }
+  .rev-progress { position: absolute; left: 0; bottom: 66px; height: 1px; width: 100%; background: var(--cobre); transform-origin: left; transform: scaleX(0); }
+
+  /* Onde estamos em duas colunas */
+  .where { display: grid !important; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 7vw, 120px); align-items: end; }
+  .where > div { max-width: none !important; }
+  .where-side .where-info { margin-top: 0; }
+  @media (max-width: 1000px) { .where { grid-template-columns: minmax(0, 1fr); } #avaliacoes .reviews { grid-template-columns: minmax(0, 1fr); } }
+
+  /* ===== Camada 2: composições mais ricas ===== */
+  .mark-kanji { position: absolute; z-index: 0; top: clamp(40px, 8vh, 90px); right: max(20px, 4vw); font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(160px, 22vw, 340px); line-height: 1; opacity: .05; pointer-events: none; user-select: none; }
+  .sec > .wrap, .contato-body > * { position: relative; z-index: 1; }
+  .seq-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(24px, 6vw, 90px); align-items: end; margin-bottom: clamp(28px, 4vh, 44px); }
+  .seq-head .lede { margin: 0 0 24px; }
+
+  /* Sequência */
+  .seq-stage { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+  .seq-frame { position: relative; aspect-ratio: 16 / 9; }
+  .seq-pratos li.seq-nota { font-style: italic; color: var(--cobre); }
+  .seq-frame .seq-img, .menu-frame .menu-img { position: absolute; inset: 0; aspect-ratio: auto; }
+  .seq-img { opacity: 0; transform: scale(1.04); transition: opacity .8s ease, transform 1.8s cubic-bezier(.2,.7,.2,1); }
+  .seq-img.is-on { opacity: 1; transform: scale(1); }
+  .seq-detail { padding-bottom: 8px; }
+  .seq-detail .label { color: var(--cobre-claro); margin: 0 0 16px; }
+  .seq-detail h3 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 3.2vw, 44px); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 14px; line-height: 1.1; }
+  /* Sequência do chef como área de lançamento: capa com foto conceito de ponta a ponta, selos, etapas com os pratos, harmonização e notas. */
+  #sequencia.sec { padding-top: 0; }
+  .om-capa { position: relative; margin: 0 calc(-1 * max(var(--gutter), env(safe-area-inset-right, 0px))) clamp(28px, 4vh, 48px) calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); min-height: min(78vh, 760px); display: flex; align-items: flex-end; overflow: hidden; }
+  .om-capa-img { position: absolute; inset: 0; margin: 0; }
+  .om-capa-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+  .om-capa::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(10,9,6,.96) 0%, rgba(10,9,6,.82) 32%, rgba(10,9,6,.25) 60%, rgba(10,9,6,0) 76%), linear-gradient(0deg, var(--tinta) 0%, rgba(14,13,9,0) 26%); }
+  .om-capa-txt { position: relative; z-index: 1; width: 100%; max-width: calc(1240px + 2 * var(--gutter)); margin: 0 auto; box-sizing: border-box; padding: clamp(84px, 12vh, 130px) var(--gutter) clamp(30px, 5vh, 56px); }
+  .om-capa-txt > * { max-width: 34rem; }
+  .om-titulo { font-family: var(--display); font-weight: 600; text-transform: uppercase; text-wrap: balance; font-size: clamp(44px, 6vw, 92px); line-height: .98; letter-spacing: 0.02em; margin: 0 0 20px; }
+  .om-sub { font-family: var(--display); font-style: italic; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.35; color: var(--texto-tinta); margin: 0 0 16px; }
+  .om-capa .lede { color: var(--cinza-tinta); }
+  /* Tratamento premium: preto mais profundo, capa emoldurada como um cartão, título em caixa alta e baixa, preço discreto. */
+  #sequencia.omakase { background: #070604; }
+  .om-capa::before { content: ""; position: absolute; z-index: 2; inset: clamp(12px, 2vw, 28px); border: 1px solid rgba(255,106,0,.3); pointer-events: none; }
+  .om-capa .eyebrow { letter-spacing: 0.34em; }
+  .om-titulo { text-transform: none; font-size: clamp(52px, 6.8vw, 108px); letter-spacing: 0; line-height: .95; }
+  .om-sub { font-size: clamp(18px, 1.6vw, 22px); color: var(--cinza-tinta); letter-spacing: 0.02em; margin-bottom: 22px; }
+  .om-preco { margin: 22px 0 26px; padding-top: 18px; border-top: 1px solid rgba(255,106,0,.28); }
+  .om-preco p { margin: 0; }
+  .om-preco p:first-child { display: flex; align-items: baseline; gap: 16px; }
+  .om-preco .label { color: var(--cinza-tinta); }
+  .om-preco b { font-family: var(--display); font-weight: 300; font-size: 34px; letter-spacing: 0.02em; color: var(--texto-tinta); }
+  .om-ritmo { margin-top: 8px !important; font-size: 14px; font-style: italic; color: var(--cinza-tinta); }
+  .om-de { font-family: var(--display); font-weight: 300; font-size: 22px; color: var(--cinza-tinta); text-decoration-thickness: 1px; }
+  .om-promo { margin-top: 6px !important; font-family: var(--ui); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--cobre); }
+  .om-dias { margin-top: 14px !important; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; color: var(--texto-tinta); }
+  .om-limite { color: var(--cinza-tinta); font-style: italic; }
+  .step .jp-etapa { display: block; margin-bottom: 4px; font-style: normal; font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-size: 13px; letter-spacing: 0.2em; color: var(--cinza-tinta); opacity: .7; transition: color .3s, opacity .3s; }
+  .step.is-active .jp-etapa { color: var(--cobre); opacity: 1; }
+  .om-harm { border-color: rgba(255,106,0,.35); outline: 1px solid rgba(255,106,0,.18); outline-offset: 5px; }
+  .om-capa .btn.reserva { background: #000; color: var(--cobre); border-color: var(--cobre); }
+  .om-capa .btn.reserva:hover, .om-capa .btn.reserva:focus-visible { background: var(--cobre); color: #000; }
+  .omakase .mark-kanji { top: auto; bottom: clamp(160px, 30vh, 320px); }
+  .om-selos { list-style: none; margin: 0 0 clamp(32px, 5vh, 56px); padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--fio-tinta); border-bottom: 1px solid var(--fio-tinta); }
+  /* Selos de autoridade: ícone em linha dentro de um círculo, título curto e explicação. */
+  .om-selos li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 26px 22px; }
+  .om-selos li + li { border-left: 1px solid var(--fio-tinta); }
+  .om-ico { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(255,106,0,.45); color: var(--cobre); box-shadow: 0 0 0 5px rgba(255,106,0,.06); }
+  .om-selos h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: 22px; letter-spacing: 0.04em; color: var(--texto-tinta); }
+  .om-selos p { margin: 0 auto; max-width: 17rem; font-size: 14px; line-height: 1.5; color: var(--cinza-tinta); }
+  .seq-pratos { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .seq-pratos li { color: var(--cinza-tinta); font-size: 16px; line-height: 1.5; }
+  .seq-pratos b { display: block; font-weight: 400; font-size: 20px; line-height: 1.3; color: var(--texto-tinta); margin-bottom: 0; }
+  .om-rodape { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 56px); margin-top: clamp(32px, 5vh, 56px); align-items: center; }
+  .om-percurso { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: clamp(16px, 2.5vh, 24px); }
+  .om-percurso .eyebrow { margin: 0; }
+  .om-percurso p:last-child { margin: 0; font-size: 15px; font-style: italic; color: var(--cinza-tinta); }
+  .om-harm { border: 1px solid var(--fio-tinta); padding: 22px 26px; }
+  .om-harm p { margin: 0; color: var(--cinza-tinta); font-size: 16px; }
+  .om-harm .om-harm-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 10px; }
+  .om-harm b { font-weight: 400; font-size: 24px; color: var(--texto-tinta); }
+  .om-harm-top span { font-family: var(--display); font-size: 22px; color: var(--cobre); white-space: nowrap; }
+  .om-notas p { margin: 0 0 10px; font-size: 14px; line-height: 1.6; color: var(--cinza-tinta); }
+  .steps { margin-top: clamp(28px, 4vh, 48px); gap: 0; }
+  .steps li::after { display: none; }
+  .step { width: 100%; text-align: left; background: none; border: 0; color: inherit; cursor: pointer; padding: 12px 10px 10px 0; border-top: 1px solid var(--fio-tinta); position: relative; font: inherit; }
+  .step::before { content: ""; position: absolute; top: -1px; left: 0; height: 1px; width: 100%; background: var(--cobre-claro); transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .step.is-active::before, .step:hover::before { transform: scaleX(1); }
+  .step .n { display: block; font-variant-numeric: lining-nums tabular-nums; font-family: var(--display); font-size: 21px; font-weight: 300; color: var(--cinza-tinta); transition: color .3s; }
+  .step b { display: block; margin-top: 6px; font-family: var(--ui); font-size: 9.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cinza-tinta); transition: color .3s; }
+  .step.is-active .n { color: var(--cobre-claro); }
+  .step.is-active b, .step:hover b { color: var(--texto-tinta); }
+  /* Celular: etapas compactas em 4 colunas e texto mais junto, para trocar de etapa vendo a foto na mesma tela. */
+  @media (max-width: 760px) {
+    .seq-stage { gap: 18px; }
+    .seq-detail .label { margin-bottom: 8px; }
+    .seq-detail h3 { font-size: 26px; margin-bottom: 8px; }
+    .seq-pratos { gap: 4px; }
+    .seq-pratos li { font-size: 14.5px; line-height: 1.4; }
+    .seq-pratos b { font-size: 17px; }
+    .steps { margin-top: 18px; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+    .step { padding: 8px 6px 7px 0; }
+    .step .jp-etapa { display: none; }
+    .step .n { font-size: 17px; }
+    .step b { margin-top: 2px; font-size: 8px; letter-spacing: 0.06em; white-space: nowrap; }
+  }
+  @media (max-width: 340px) { .step b { font-size: 7px; letter-spacing: 0.04em; } }
+
+  /* Experiência */
+  /* Experiência: à esquerda o título e a citação (alinhada ao pé da foto), à direita a colagem; os pilares embaixo, em toda a largura. */
+  .exp { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(32px, 6vw, 96px); align-items: stretch; }
+  .exp-copy { display: flex; flex-direction: column; padding-top: 4vh; }
+  .exp-collage { position: relative; padding-bottom: 20%; }
+  .exp-collage .big img { aspect-ratio: 16 / 11; }
+  .exp-collage .small { position: absolute; width: 34%; left: -12%; bottom: 0; box-shadow: 0 30px 60px rgba(38,32,26,.25); outline: 10px solid var(--papel); }
+  .exp-collage .small img { aspect-ratio: 4 / 5; }
+  .exp-quote { margin: auto 0 0; padding: 32px 0 0 24px; border-left: 2px solid var(--cobre); max-width: 26rem; }
+  .exp-quote p { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(22px, 2vw, 28px); line-height: 1.4; margin: 0; color: var(--texto-papel); }
+  .pillars { grid-column: 1 / -1; list-style: none; margin: clamp(36px, 5vh, 60px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px); border-top: 1px solid var(--fio-papel); }
+  .pillars li { padding-top: 30px; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 18px; align-items: start; }
+  .pillars li .pk { grid-row: 1 / span 2; }
+  .pillars .pk { font-family: "Shippori Mincho", serif; font-size: 40px; color: var(--cobre); line-height: 1; }
+  .pillars h3 { font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: 0.12em; text-transform: uppercase; margin: 2px 0 8px; color: var(--texto-papel); }
+  .pillars p { margin: 0; color: #5d544a; font-size: 17px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+  /* Galeria */
+  .gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(90px, 8.5vw, 130px); gap: 14px; margin-top: 0; }
+  .gallery .frame { position: relative; }
+  .gallery .frame img { aspect-ratio: auto; height: 100%; }
+  .gallery figcaption { position: absolute; left: 14px; bottom: 12px; color: var(--texto-tinta); opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .4s; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+  .gallery .frame:hover figcaption, .gallery .frame:focus-within figcaption { opacity: 1; transform: none; }
+  .ga { grid-column: 1 / span 4; grid-row: span 5; }
+  .gb { grid-column: 5 / span 8; grid-row: span 3; }
+  .gc { grid-column: 5 / span 3; grid-row: span 2; }
+  .gd { grid-column: 8 / span 5; grid-row: span 4; }
+  .ge { grid-column: 1 / span 7; grid-row: span 2; }
+  .gallery .ge { grid-column: 1 / span 7; }
+
+  /* Barcas */
+  .barca-copy .lede { color: var(--cinza-tinta); margin: 0 0 18px; }
+  .barca-copy .tags { color: var(--cobre-claro); margin: 0 0 28px; }
+
+  /* Contato: imagem de um lado, reserva do outro */
+  .contato { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: var(--papel); scroll-margin-top: 64px; }
+  .contato-img { margin: 0; min-height: 100%; }
+  .contato-img img { aspect-ratio: auto; height: 100%; min-height: 640px; }
+  .contato-body { position: relative; overflow: hidden; padding-block: clamp(56px, 8vh, 96px); padding-left: var(--gutter); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+  .contato-body .place { display: flex; gap: 14px; align-items: flex-start; margin: 0 0 40px; color: var(--cinza-papel); line-height: 1.5; }
+  .contato-body .place svg { flex: none; margin-top: 3px; }
+  .contato-body .place strong { display: block; font-weight: 400; color: var(--texto-papel); }
+  .booking { border-top: 1px solid var(--fio-papel); padding-top: 28px; max-width: 34rem; }
+  .booking-title { color: var(--cobre); margin: 0 0 18px; }
+  .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; margin-bottom: 30px; }
+  .fields label { display: grid; gap: 8px; }
+  .fields .full { grid-column: 1 / -1; }
+  .fields .label { color: var(--cinza-papel); font-size: 9.5px; }
+  .fields input { font: 400 18px/1.3 var(--display); color: var(--texto-papel); background: transparent; border: 0; border-bottom: 1px solid var(--fio-papel); padding: 6px 0 10px; border-radius: 0; color-scheme: light; min-width: 0; }
+  .fields input:focus { outline: none; border-bottom-color: var(--cobre); }
+  .booking .btn { color: var(--texto-papel); cursor: pointer; }
+  .form-hint { margin: 14px 0 0; font-size: 14px; font-style: italic; color: var(--cinza-papel); }
+  .fields select { font: 400 18px/1.3 var(--display); color: var(--texto-papel); background: transparent; border: 0; border-bottom: 1px solid var(--fio-papel); padding: 6px 0 10px; border-radius: 0; -webkit-appearance: none; appearance: none; cursor: pointer; }
+  .fields select:focus { outline: none; border-bottom-color: var(--cobre); }
+  .form-status { margin: 18px 0 0; font-size: 15px; font-style: italic; color: var(--cobre); }
+
+  /* Rodapé */
+  .foot { padding-block: clamp(48px, 7vh, 80px) 28px; }
+  .foot > .wrap:first-child { display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap: 40px; align-items: start; justify-content: initial; }
+  .foot .mark .sym { width: 58px; } .foot .mark .word { width: 184px; }
+  /* Guia de rolagem: um ensō no canto que se pinta com a página inteira, com o samurai enchendo de laranja de baixo para cima. */
+  .guia { position: fixed; z-index: 6; right: max(var(--gutter), env(safe-area-inset-right, 0px)); bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px)); display: flex; flex-direction: row-reverse; align-items: center; gap: 12px; text-decoration: none; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .6s ease, transform .6s ease; }
+  .guia.on { opacity: 1; transform: none; pointer-events: auto; }
+  .guia-enso { position: relative; width: 64px; height: 64px; border-radius: 50%; background: rgba(14,13,9,.62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .guia-enso svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .guia .trilha { fill: none; stroke: rgba(241,235,226,.12); stroke-width: 1.5; }
+  .guia .traco { fill: none; stroke: var(--cobre); stroke-linecap: round; stroke-dasharray: 1; stroke-width: 4.5; stroke-dashoffset: calc(1 - var(--p, 0)); }
+  .guia img { position: absolute; left: 22%; top: 24%; width: 56%; height: auto; }
+  .sam-base { opacity: .16; filter: grayscale(1) brightness(2.2); }
+  .sam-cor { clip-path: inset(calc((1 - var(--p, 0)) * 100%) 0 0 0); }
+  .guia-dica { color: var(--texto-tinta); background: rgba(14,13,9,.62); padding: 7px 11px; white-space: nowrap; transition: opacity .5s ease; }
+  .guia.andou .guia-dica { opacity: 0; }
+  @media (max-width: 760px) { .guia { right: 12px; bottom: max(14px, calc(env(safe-area-inset-bottom, 0px) + 10px)); } .guia-enso { width: 44px; height: 44px; } .guia-dica { font-size: 9px; } }
+  .foot-tag { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 24px; color: var(--texto-tinta); margin: 22px 0 24px; }
+  .foot-brand .btn.reserva { background: #000; color: var(--cobre); border-color: var(--cobre); }
+  .foot-brand .btn.reserva:hover, .foot-brand .btn.reserva:focus-visible { background: var(--cobre); color: #000; }
+  .foot-col { display: grid; gap: 12px; align-content: start; font-size: 17px; line-height: 1.45; color: var(--texto-tinta); }
+  .foot-col .label { color: var(--cobre-claro); margin: 0 0 6px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.24em; }
+  .foot-col a { text-decoration: none; color: var(--texto-tinta); transition: color .2s; } .foot-col a:hover { color: var(--cobre); }
+  .foot-col .lang button { font-size: 12px; color: #b9b0a4; }
+  .lang-foot { margin-left: -7px; }
+  .foot-base { display: flex; justify-content: space-between; gap: 16px; margin-top: clamp(32px, 5vh, 56px) !important; padding-top: 22px; border-top: 1px solid var(--fio-tinta); }
+
+  @media (max-width: 1000px) {
+    .seq-head, .seq-stage, .exp, .contato, .om-rodape { grid-template-columns: minmax(0, 1fr); }
+    .om-selos li { gap: 10px; padding: 18px 8px; }
+    .om-ico { width: 42px; height: 42px; box-shadow: 0 0 0 3px rgba(255,106,0,.06); }
+    .om-ico svg { width: 22px; height: 22px; }
+    .om-selos h3 { font-size: 14px; line-height: 1.25; letter-spacing: 0.02em; margin-bottom: 4px; }
+    .om-selos p { font-size: 11.5px; line-height: 1.4; }
+    .om-capa { min-height: 0; }
+    .om-capa-img { bottom: auto; height: 50vh; }
+    .om-capa::after { background: linear-gradient(0deg, var(--tinta) 0%, var(--tinta) 38%, rgba(14,13,9,.55) 62%, rgba(14,13,9,0) 85%); }
+    .om-capa-txt { padding-top: 36vh; }
+    .exp-collage .small { left: auto; right: 6%; width: 40%; }
+    .exp-quote { margin: 8px 0 36px; padding-top: 0; }
+    .pillars li { display: block; }
+    .pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .pillars li { padding-top: 20px; }
+    .pillars .pk { font-size: 26px; }
+    .pillars h3 { font-size: 10px; letter-spacing: 0.04em; margin: 12px 0 6px; }
+    .pillars p { font-size: 13px; line-height: 1.45; }
+    .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .gallery { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 15vw; }
+    .ga { grid-column: 1 / span 3; grid-row: span 4; } .gb { grid-column: 4 / span 3; grid-row: span 2; } .gc { grid-column: 4 / span 3; grid-row: span 2; } .gd { grid-column: 1 / span 6; grid-row: span 3; } .gallery .ge { grid-column: 1 / span 6; grid-row: span 3; }
+    .contato-img img { min-height: 0; aspect-ratio: 16 / 10; }
+    .foot > .wrap:first-child { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .foot-brand { grid-column: 1 / -1; }
+    .mark-kanji { font-size: 140px; }
+  }
+  @media (max-width: 640px) {
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fields { grid-template-columns: minmax(0, 1fr); }
+    .gallery figcaption { opacity: 1; transform: none; }
+  }
+
+  /* Cardápio completo: carta em tela cheia sobre o papel, com abas por momento da refeição. */
+  .carta-ver { margin-top: 36px; }
+  .carta { position: fixed; inset: 0; z-index: 9; background: var(--papel); color: var(--texto-papel); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); }
+  .carta[hidden] { display: none; }
+  .carta-topo { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px var(--gutter) 0; }
+  .carta-topo .eyebrow { margin: 0; }
+  .carta .close { position: static; background: none; border: 0; cursor: pointer; color: var(--cinza-papel); padding: 12px 0; }
+  .carta .close:hover { color: var(--texto-papel); }
+  .carta-abas { display: flex; flex-wrap: wrap; column-gap: 30px; padding: 10px var(--gutter) 0; border-bottom: 1px solid var(--fio-papel); }
+  .carta-abas::-webkit-scrollbar { display: none; }
+  .carta-abas button { font-family: var(--ui); font-size: 11.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: 12px 0 14px; color: var(--cinza-papel); cursor: pointer; transition: color .2s, border-color .3s; }
+  .carta-abas button:hover { color: var(--texto-papel); }
+  .carta-abas button[aria-selected="true"] { color: var(--texto-papel); border-color: var(--cobre); }
+  .carta-corpo { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 32px var(--gutter) 88px; }
+  .carta-cab { position: relative; display: flex; align-items: baseline; gap: 20px; min-height: clamp(200px, 26vw, 380px); padding: 0 clamp(24px, 4vw, 56px) clamp(24px, 3vw, 40px); align-items: flex-end; overflow: hidden; background: var(--tinta); color: var(--texto-tinta); }
+  .carta-cab img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+  .carta-cab::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(14,13,9,.75), rgba(14,13,9,.2) 55%, rgba(14,13,9,0)), linear-gradient(to top, rgba(14,13,9,.55), rgba(14,13,9,0) 50%); }
+  .carta-cab h2, .carta-cab .jp { position: relative; z-index: 2; }
+  .carta-cab h2 { text-shadow: 0 2px 18px rgba(0,0,0,.6); font-family: var(--display); font-weight: 600; font-size: clamp(36px, 4.4vw, 60px); line-height: 1; text-transform: uppercase; letter-spacing: 0.06em; margin: 0; }
+  .carta-cab .jp { font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-size: 20px; color: var(--cobre); }
+  .carta-sec { margin-top: 48px; scroll-margin-top: 24px; }
+  .carta-sec h3 { font-family: var(--ui); font-size: 12.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cobre); margin: 0 0 4px; }
+  .carta-itens { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(40px, 6vw, 96px); }
+  .carta-itens li { padding: 16px 0 15px; border-bottom: 1px solid var(--fio-papel); }
+  .carta-itens li.com-foto { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: start; }
+  .carta-itens .foto-btn { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; overflow: hidden; }
+  .carta-itens li.com-foto img { width: 96px; height: 96px; object-fit: cover; display: block; background: var(--tinta); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .carta-itens .foto-btn:hover img, .carta-itens .foto-btn:focus-visible img { transform: scale(1.06); }
+  /* Foto ampliada sobre a carta. */
+  .foto-zoom { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 64px 20px 32px; background: rgba(14,13,9,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); cursor: zoom-out; opacity: 0; transition: opacity .35s ease; }
+  .foto-zoom[hidden] { display: none; }
+  .foto-zoom.on { opacity: 1; }
+  .foto-zoom .close { position: absolute; top: max(20px, env(safe-area-inset-top, 0px)); right: max(24px, env(safe-area-inset-right, 0px)); background: none; border: 0; color: var(--cinza-tinta); cursor: pointer; padding: 12px 0; }
+  .foto-zoom figure { margin: 0; width: min(640px, 100%); transform: scale(.97); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+  .foto-zoom.on figure { transform: none; }
+  .foto-zoom img { display: block; box-sizing: border-box; width: 100%; max-height: 68vh; object-fit: cover; aspect-ratio: 1; background: var(--tinta); }
+  .foto-zoom img.produto { object-fit: contain; background: #fff; padding: 0; }
+  .foto-zoom figcaption { padding-top: 18px; color: var(--texto-tinta); }
+  .fz-linha { display: flex; align-items: baseline; gap: 18px; }
+  .fz-linha b { flex: 1; font-family: var(--display); font-weight: 600; font-size: 24px; line-height: 1.2; }
+  .fz-preco { font-family: var(--ui); font-size: 13px; letter-spacing: .04em; }
+  .foto-zoom p { margin: 6px 0 0; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--cinza-tinta); }
+  .carta-itens li.com-foto img.produto { box-sizing: border-box; object-fit: contain; background: #fff; padding: 0; }
+  .carta-itens .foto-vazia { display: block; width: 96px; }
+  @media (max-width: 760px) { .carta-itens .foto-vazia { width: 80px; } }
+  .carta-linha { display: flex; align-items: baseline; gap: 18px; }
+  .carta-linha b { flex: 1; font-family: var(--display); font-weight: 600; font-size: 21px; line-height: 1.22; }
+  .carta-linha span { font-family: var(--ui); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .carta-itens p { margin: 5px 0 0; font-style: italic; font-size: 16.5px; line-height: 1.45; color: #5d544a; }
+  .carta-nota { margin: 56px 0 0; font-family: var(--ui); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cinza-papel); }
+  html[lang="ja"] .carta-cab h2 { font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-weight: 400; }
+  @media (max-width: 760px) {
+    .carta-itens { grid-template-columns: minmax(0, 1fr); }
+    .carta-corpo { padding-top: 0; }
+    /* No celular as abas quebram em linhas, com letra menor, para todas aparecerem sem rolar de lado. */
+    .carta-abas { column-gap: 16px; row-gap: 0; padding-top: 4px; }
+    .carta-abas button { font-size: 9.5px; letter-spacing: 0.13em; padding: 9px 0 9px; }
+    .carta-linha b { font-size: 20px; }
+    .carta-cab { min-height: 190px; padding: 0 20px 20px; margin: 0 calc(-1 * var(--gutter)); }
+    .carta-cab img { object-position: 78% 50%; }
+    .carta-itens li.com-foto { grid-template-columns: 80px minmax(0, 1fr); gap: 14px; }
+    .carta-itens li.com-foto img { width: 80px; height: 80px; }
+    .foto-zoom img { max-height: 58vh; }
+  }
+</style>
+
+<div id="abertura" aria-hidden="true">
+  <img class="ab-sym" src="assets/logo-simbolo.svg" alt="" width="96" height="88">
+  <img class="ab-word" src="assets/logo-wordmark.svg" alt="" width="190" height="62">
+  <div class="ab-linha"><i></i></div>
+</div>
+
+<header class="bar">
+  <button class="menu-toggle" id="menu-open" type="button" aria-expanded="false" aria-controls="overlay" aria-label="Abrir menu"><i aria-hidden="true"></i></button>
+  <a class="mark" href="#hero" aria-label="Samurai Sushi, início"><img class="sym" src="assets/logo-simbolo.svg" alt="" width="32" height="29"><img class="word" src="assets/logo-wordmark.svg" alt="Samurai Sushi" width="96" height="30"></a>
+  <nav aria-label="Seções"><ul class="nav">
+    <li><a href="#cardapio" data-i18n="nav.menu">Cardápio</a></li>
+    <li><a href="#sequencia" data-i18n="nav.seq">Sequência Itamae</a></li>
+    <li><a href="#experiencia" data-i18n="nav.exp">Experiência</a></li>
+    <li><a href="#galeria" data-i18n="nav.gal">Galeria</a></li>
+    <li><a href="#onde" data-i18n="nav.where">Onde estamos</a></li>
+    <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
+  </ul></nav>
+  <div class="lang" role="group" aria-label="Idioma">
+    <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-lang="ja" aria-pressed="false" lang="ja">日本語</button>
+  </div>
+</header>
+<nav class="overlay" id="overlay" aria-label="Seções" hidden>
+  <button class="close label" id="menu-close" type="button" data-i18n="ui.close">Fechar</button>
+  <a href="#cardapio" data-i18n="nav.menu">Cardápio</a>
+  <a href="#sequencia" data-i18n="nav.seq">Sequência Itamae</a>
+  <a href="#experiencia" data-i18n="nav.exp">Experiência</a>
+  <a href="#galeria" data-i18n="nav.gal">Galeria</a>
+  <a href="#onde" data-i18n="nav.where">Onde estamos</a>
+  <a href="#contato" data-i18n="nav.contact">Contato</a>
+  <div class="lang lang-overlay" role="group" aria-label="Idioma">
+    <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-lang="ja" aria-pressed="false" lang="ja">日本語</button>
+  </div>
+</nav>
+
+<main id="pilha">
+<section id="hero" aria-label="Samurai Sushi">
+  <div id="stage">
+    <canvas id="film" aria-hidden="true"></canvas>
+    <div id="load-status" class="label">Carregando 0%</div>
+    <span class="vert" lang="ja" aria-hidden="true">日本の味、新しいかたちで</span>
+
+    <div class="chapter">
+      <p class="label" data-from="0" data-to="1" data-i18n="hero.label">Culinária japonesa · Brasília</p>
+      <div class="marca-bloco">
+        <h1 class="marca-hero" data-from="0" data-to="1"><img src="assets/logo-wordmark.svg" alt="Samurai Sushi" width="460" height="150"></h1>
+        <a class="btn arrow reserva hero-reserva" href="#contato" data-from="0" data-to="1" data-i18n="cta.book">Fazer reserva</a>
+      </div>
+    </div>
+    <div class="scroll-cue label" data-from="0" data-to="0.1" data-i18n="ui.scroll">Scroll</div>
+    <div class="hero-base" data-from="0.82" data-to="1">
+      <p class="hb-jp" lang="ja">日本の味、新しいかたちで</p>
+      <a class="label hb-desce" href="#cardapio"><span data-i18n="hero.down">Role para descobrir</span><i aria-hidden="true"></i></a>
+    </div>
+    <div class="meter" aria-hidden="true"><div id="meter-fill"></div></div>
+    <div class="hero-progress" id="hero-progress" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec papel" id="cardapio">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow label" data-i18n="nav.menu">Cardápio</p>
+      <h2 class="title" data-i18n="menu.title">Sabores em equilíbrio</h2>
+      <p class="subtitulo" data-i18n="menu.lede">Técnica japonesa, olhar contemporâneo</p>
+      <ul class="menu">
+        <li><a href="#carta" data-carta="entradas" data-img="img/real-entradas.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">前菜</span><div><h3 data-i18n="m1">Entradas</h3><p data-i18n="m1d">Leves, precisas e cheias de personalidade</p></div></a></li>
+        <li><a href="#carta" data-carta="sashimis" data-img="img/real-sashimi.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">刺身</span><div><h3 data-i18n="m2">Sashimis</h3><p data-i18n="m2d">A pureza do peixe em sua melhor forma</p></div></a></li>
+        <li><a href="#carta" data-carta="sushis" data-alvo="Nigiri" data-img="img/real-nigiri.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">握り</span><div><h3 data-i18n="m3">Nigiris</h3><p data-i18n="m3d">O equilíbrio entre técnica e sabor</p></div></a></li>
+        <li><a href="#carta" data-carta="quentes" data-img="img/real-quentes.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">焼物</span><div><h3 data-i18n="m4">Pratos quentes</h3><p data-i18n="m4d">Receitas que surpreendem</p></div></a></li>
+        <li><a href="#sequencia" data-img="img/real-sequencia.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">おまかせ</span><div><h3 data-i18n="nav.seq">Sequência Itamae</h3><p data-i18n="m5d">Sete etapas que revelam a essência</p></div></a></li>
+        <li><a href="#carta" data-carta="sobremesas" data-img="img/real-sobremesa.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">甘味</span><div><h3 data-i18n="m6">Sobremesas</h3><p data-i18n="m6d">Finalizações que ficam na memória</p></div></a></li>
+        <li><a href="#carta" data-carta="bebidas" data-img="img/real-bebidas.webp" data-pos="50% 50%"><span class="jp" lang="ja" aria-hidden="true">飲物</span><div><h3 data-i18n="m7">Bebidas</h3><p data-i18n="m7d">Saquês, drinks autorais e vinhos</p></div></a></li>
       </ul>
-      
-      <div class="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
-  </header>
+      <button class="btn arrow carta-ver" type="button" data-carta="entradas" data-i18n="c.ver">Ver o cardápio completo</button>
+    </div>
+    <figure class="frame menu-frame" aria-hidden="true"><img class="menu-img is-on" src="img/real-nigiri.webp" alt="" width="1200" height="1500" loading="lazy"><img class="menu-img" alt="" width="1200" height="1800" loading="lazy"></figure>
+  </div>
+</section>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    
-    <div class="hero-content">
-      <span class="hero-badge">#115 de Brasília • Culinária Japonesa</span>
-      <h1>Samurai <span class="gold">Sushi</span></h1>
-      <p class="hero-subtitle">A arte milenar do sushi em cada peça</p>
-      
-      <div class="hero-buttons">
-        <a href="#cardapio" class="btn btn-primary">
-          🍣 Ver Cardápio
-        </a>
-        <a href="https://wa.me/5561999872266" target="_blank" rel="noopener" class="btn btn-outline">
-          📞 Fazer Reserva
-        </a>
+<section class="sec tinta omakase" id="sequencia">
+  <div class="om-capa">
+    <figure class="om-capa-img" aria-hidden="true"><img src="img/sequencia-mesa.webp" alt="" width="2000" height="1116" loading="lazy" style="--pos: 50% 50%"></figure>
+    <div class="om-capa-txt">
+      <p class="eyebrow label"><span data-i18n="om.novo">Lançamento exclusivo</span> · Samurai Fusion</p>
+      <h2 class="om-titulo" data-i18n="om.titulo">Sequência Itamae</h2>
+      <p class="om-sub" data-i18n="om.sub">sete etapas · nove pratos · pescados da casa e da estação</p>
+      <p class="lede" data-i18n="om.lede">Uma experiência exclusiva do Samurai, conduzida pelas mãos do chef.</p>
+      <div class="om-preco">
+        <p><span class="label" data-i18n="om.preco">Por pessoa</span><s class="om-de">R$ 249</s><b>R$ 219</b></p>
+        <p class="om-promo" data-i18n="om.promo">Valor promocional até 21 de novembro</p>
+        <p class="om-ritmo" data-i18n="om.ritmo">Servida à mesa completa · cerca de 90 minutos</p>
+        <p class="om-dias"><span data-i18n="om.dias">Quinta, sexta e sábado · das 18h às 21h30</span><span class="om-limite" data-i18n="om.limite">Limitada a 30 sequências por noite</span></p>
+      </div>
+      <a class="btn arrow reserva" href="#contato" data-i18n="om.cta">Reservar a experiência</a>
+    </div>
+  </div>
+  <span class="mark-kanji" lang="ja" aria-hidden="true">七</span>
+  <div class="wrap">
+    <ul class="om-selos">
+      <li><span class="om-ico"><svg viewBox="0 0 48 48" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="19" r="12"/><circle cx="24" cy="19" r="8.5" stroke-opacity=".5"/><path d="M24 13.5l1.7 3.5 3.8.5-2.8 2.7.7 3.8-3.4-1.8-3.4 1.8.7-3.8-2.8-2.7 3.8-.5z"/><path d="M17.5 29 14 42l5-2.5 3.5 4 2-11.5M30.5 29 34 42l-5-2.5-3.5 4"/></svg></span><div><h3 data-i18n="om.selo1t">Certificado JETRO</h3><p data-i18n="om.selo1">Único rodízio de Brasília certificado pelo Ministério da Agricultura do Japão</p></div></li>
+      <li><span class="om-ico"><svg viewBox="0 0 48 48" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 31 37 9c2.6-2.6 6.4-1.3 5 2.6L22.5 36.5z"/><path d="M17 31l5.5 5.5"/><path d="M19.6 33.8 9 44.4" stroke-width="4.2"/><path d="M28 21.5l6.5-7" stroke-opacity=".45"/></svg></span><div><h3 data-i18n="om.selo2t">+20 anos</h3><p data-i18n="om.selo2">De culinária japonesa nas mãos do nosso chef</p></div></li>
+      <li><span class="om-ico"><svg viewBox="0 0 48 48" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 24c6.5-8.5 17-10 26.5-3.5C34.5 17 38 15 43 14c-2.5 4.5-2.5 15.5 0 20-5-1-8.5-3-11.5-6.5C22 34 11.5 32.5 5 24z"/><circle cx="13.5" cy="22" r="1.3" fill="currentColor" stroke="none"/><path d="M20 18.5c1.5 3.5 1.5 7.5 0 11" stroke-opacity=".5"/></svg></span><div><h3 data-i18n="om.selo3t">Peixe do dia</h3><p data-i18n="om.selo3">Pescados que mudam com a chegada do mercado</p></div></li>
+    </ul>
+    <div class="om-percurso">
+      <p class="eyebrow label" data-i18n="om.percurso">O percurso</p>
+      <p data-i18n="seq.lede">Toque em cada etapa para ver o que chega à mesa.</p>
+    </div>
+    <div class="seq-stage">
+      <figure class="frame seq-frame" aria-hidden="true"><img class="seq-img is-on" src="img/sakizuke.webp" alt="" width="1500" height="1006" loading="lazy"><img class="seq-img" alt="" width="1500" height="1006" loading="lazy"></figure>
+      <div class="seq-detail" aria-live="polite">
+        <p class="label"><span data-i18n="seq.course">Etapa</span> <span id="seq-n">01</span> / 07 · <span id="seq-tag"></span></p>
+        <h3 id="seq-name">Abertura</h3>
+        <ul class="seq-pratos" id="seq-pratos"></ul>
       </div>
     </div>
-    
-    <div class="scroll-indicator">
-      <span></span>
+    <ol class="steps" aria-label="Etapas da sequência">
+      <li><button type="button" class="step is-active" data-img="img/sakizuke.webp|img/tartar.webp" data-key="s1" aria-pressed="true"><i class="jp-etapa" lang="ja">先付</i><span class="n">01</span><b data-i18n="s1">Abertura</b></button></li>
+      <li><button type="button" class="step" data-img="img/otsukuri.webp" data-key="s2" aria-pressed="false"><i class="jp-etapa" lang="ja">造り</i><span class="n">02</span><b data-i18n="s2">Sashimi Edo</b></button></li>
+      <li><button type="button" class="step" data-img="img/chawanmushi.webp|img/gyoza.webp" data-key="s3" aria-pressed="false"><i class="jp-etapa" lang="ja">温物</i><span class="n">03</span><b data-i18n="s3">Quente leve</b></button></li>
+      <li><button type="button" class="step" data-img="img/enso-atum.webp" data-key="s4" aria-pressed="false"><i class="jp-etapa" lang="ja">握り</i><span class="n">04</span><b data-i18n="s4">Nigiri e Gunkan</b></button></li>
+      <li><button type="button" class="step" data-img="img/black-cod.webp" data-key="s5" aria-pressed="false"><i class="jp-etapa" lang="ja">焼物</i><span class="n">05</span><b data-i18n="s5">Quente</b></button></li>
+      <li><button type="button" class="step" data-img="img/futomaki.webp" data-key="s6" aria-pressed="false"><i class="jp-etapa" lang="ja">太巻き</i><span class="n">06</span><b data-i18n="s6">Futomaki Edo</b></button></li>
+      <li><button type="button" class="step" data-img="img/chokko.webp|img/matcha.webp" data-key="s7" aria-pressed="false"><i class="jp-etapa" lang="ja">甘味</i><span class="n">07</span><b data-i18n="s7">Sobremesa</b></button></li>
+    </ol>
+    <div class="om-rodape">
+      <div class="om-harm">
+        <p class="om-harm-top"><b data-i18n="om.harm">Harmonização com saquês</b><span>+ R$ 120</span></p>
+        <p data-i18n="om.harmd">Quatro doses da nossa carta, uma para cada bloco da sequência, e umeshu para acompanhar a sobremesa.</p>
+      </div>
+      <div class="om-notas">
+        <p data-i18n="om.nota1">Abertura e quente leve chegam completos, com os dois pratos de cada etapa. Você escolhe só a sobremesa, ou deixa com o chef, que indica a mousse de matchá.</p>
+        <p data-i18n="om.nota2">Os peixes do dia mudam com o mercado; nossa equipe informa os de hoje. Avise alergias e restrições antes da primeira etapa.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== CARDÁPIO ===== -->
-  <section id="cardapio">
-    <div class="section-header">
-      <h2>Nosso <span class="gold">Cardápio</span></h2>
-      <div class="divider"></div>
-      <p>Ingredientes selecionados e técnicas tradicionais japonesas para uma experiência gastronômica única</p>
+<section class="sec papel" id="experiencia">
+  <span class="mark-kanji" lang="ja" aria-hidden="true">技</span>
+  <div class="wrap exp">
+    <div class="exp-copy">
+      <p class="eyebrow label" data-i18n="nav.exp">Experiência</p>
+      <h2 class="title" data-i18n="exp.title">Mais que sushi, uma experiência</h2>
+      <p class="subtitulo" data-i18n="exp.lede">Para todos os sentidos</p>
+      <blockquote class="exp-quote"><p data-i18n="exp.quote">O sushi começa muito antes do balcão: na escolha do peixe, no ponto do arroz, no silêncio do preparo.</p></blockquote>
     </div>
-    
-    <div class="menu-container">
-      <!-- Navegação das categorias -->
-      <div id="category-nav" class="category-nav">
-        <!-- Gerado via JavaScript -->
-      </div>
-      
-      <!-- Conteúdo do menu -->
-      <div id="menu-content">
-        <!-- Carregado via JavaScript -->
-      </div>
+    <div class="exp-collage">
+      <figure class="frame big"><img src="img/amb-salao-templo.webp" alt="Salão do Samurai com painel de templo japonês e sombrinhas acesas" width="1536" height="1024" loading="lazy" style="object-position: 55% 50%"></figure>
+      <figure class="frame small"><img src="img/cozinha-nigiri.webp" alt="Sushiman moldando o nigiri, com o combinado na tábua" width="1025" height="1535" loading="lazy" style="object-position: 55% 40%"></figure>
     </div>
-  </section>
+    <ul class="pillars">
+      <li><span class="pk" lang="ja" aria-hidden="true">技</span><h3 data-i18n="p1">Técnica</h3><p data-i18n="p1d">Cortes precisos e arroz feito na hora.</p></li>
+      <li><span class="pk" lang="ja" aria-hidden="true">旬</span><h3 data-i18n="p2">Estação</h3><p data-i18n="p2d">O melhor peixe de cada época do ano.</p></li>
+      <li><span class="pk" lang="ja" aria-hidden="true">心</span><h3 data-i18n="p3">Hospitalidade</h3><p data-i18n="p3d">Cada visita recebida com atenção.</p></li>
+    </ul>
+  </div>
+</section>
 
-  <!-- ===== SOBRE ===== -->
-  <section id="sobre">
-    <div class="section-header">
-      <h2>Por que <span class="gold">Samurai?</span></h2>
-      <div class="divider"></div>
-      <p>Nossa filosofia une a tradição milenar japonesa com a excelência em cada detalhe</p>
-    </div>
-    
-    <div class="about-grid">
-      <div class="about-card">
-        <div class="icon">🎌</div>
-        <h3>Tradição</h3>
-        <p>Técnicas ancestrais de preparo respeitando a cultura japonesa autêntica há gerações.</p>
-      </div>
-      
-      <div class="about-card">
-        <div class="icon">🐟</div>
-        <h3>Frescor</h3>
-        <p>Peixes e frutos do mar selecionados diariamente com rigoroso controle de qualidade.</p>
-      </div>
-      
-      <div class="about-card">
-        <div class="icon">⚔️</div>
-        <h3>Precisão</h3>
-        <p>Cortes perfeitos executados por sushimen com anos de experiência e dedicação.</p>
+<section class="sec tinta" id="galeria">
+  <div class="wrap">
+    <div class="seq-head">
+      <div>
+        <p class="eyebrow label" data-i18n="nav.gal">Galeria</p>
+        <h2 class="title" data-i18n="gal.title">Detalhes que ficam</h2>
+        <p class="subtitulo" data-i18n="gal.lede">Atmosfera única</p>
       </div>
     </div>
-  </section>
+    <div class="gallery">
+      <figure class="frame ga"><img src="img/amb-hannya.webp" alt="Máscara hannya emoldurada na parede laranja, sob luz rasante" width="1136" height="1408" loading="lazy" style="object-position: 62% 50%"><figcaption class="label" data-i18n="g1">Máscara hannya</figcaption></figure>
+      <figure class="frame gb"><img src="img/det-prateleira.webp" alt="Daruma, maneki-neko e outras peças japonesas, cada uma sob seu foco de luz" width="1536" height="1024" loading="lazy" style="object-position: 50% 40%"><figcaption class="label" data-i18n="g4">Amuletos da casa</figcaption></figure>
+      <figure class="frame gc"><img src="img/det-bambu.webp" alt="Folhas de bambu na penumbra" width="1136" height="1408" loading="lazy" style="object-position: 50% 45%"><figcaption class="label" data-i18n="g2">Bambu</figcaption></figure>
+      <figure class="frame gd"><img src="img/det-wagasa.webp" alt="Sombrinha japonesa pintada com flores, iluminada por dentro" width="1264" height="1264" loading="lazy" style="object-position: 60% 60%"><figcaption class="label" data-i18n="g3">Wagasa</figcaption></figure>
+      <figure class="frame ge"><img src="img/det-folha.webp" alt="Textura de folha rajada de verde e creme, em luz rasante" width="1136" height="1408" loading="lazy" style="object-position: 50% 45%"><figcaption class="label" data-i18n="g5">Texturas</figcaption></figure>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== CONTATO ===== -->
-  <section id="contato">
-    <div class="section-header">
-      <h2>Faça sua <span class="gold">Reserva</span></h2>
-      <div class="divider"></div>
-      <p>Garanta sua mesa e viva uma experiência gastronômica inesquecível</p>
-    </div>
-    
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="icon">📍</div>
-          <div>
-            <h4>Endereço</h4>
-            <p>St. Sudoeste CLSW 300 B<br>Edifício Morro de São Paulo, Loja 22<br>Brasília - DF, 70673-073</p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="icon">🕐</div>
-          <div>
-            <h4>Horário</h4>
-            <p>Segunda: 17h às 23h<br>Terça a Sexta: 12h às 15h e 17h às 23h<br>Sábado: 12h às 23h<br>Domingo: 12h às 22h45</p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="icon">📞</div>
-          <div>
-            <h4>Telefone / WhatsApp</h4>
-            <p>(61) 99987-2266</p>
-          </div>
-        </div>
+<section class="sec papel" id="avaliacoes">
+  <div class="wrap">
+    <div class="rev-top">
+      <div>
+        <p class="eyebrow label" data-i18n="rev.eyebrow">Avaliações</p>
+        <h2 class="title" data-i18n="rev.title">O que dizem nossos convidados</h2>
       </div>
-      
-      <div class="contact-cta">
-        <h3>Pronto para pedir?</h3>
-        <p>Faça seu pedido agora mesmo pelo WhatsApp e receba em casa!</p>
-        <a href="https://wa.me/5561999872266?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido" target="_blank" rel="noopener" class="btn whatsapp-btn">
-          💬 Chamar no WhatsApp
-        </a>
+      <div class="rev-score" id="rev-score" hidden>
+        <span class="rev-avg" id="rev-avg"></span>
+        <span class="rev-stars" id="rev-stars" aria-hidden="true"></span>
+        <span class="rev-total"><span id="rev-total"></span> <span data-i18n="rev.count">avaliações no Google</span></span>
+        <a class="link arrow" id="rev-link" href="https://www.google.com/maps/search/?api=1&amp;query=Samurai+Sushi+Bras%C3%ADlia" target="_blank" rel="noopener" data-i18n="rev.all">Ver no Google Maps</a>
       </div>
     </div>
-  </section>
+    <ul class="rev-grade" id="rev-grade" aria-label="Avaliações do Google"></ul>
+    <template id="rev-g"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 10.2v3.9h5.5c-.2 1.3-1.6 3.9-5.5 3.9-3.3 0-6-2.7-6-6.1s2.7-6.1 6-6.1c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.8 3.3 14.6 2.3 12 2.3 6.6 2.3 2.3 6.6 2.3 12S6.6 21.7 12 21.7c5.6 0 9.3-3.9 9.3-9.5 0-.6-.1-1.1-.2-1.6H12z"/></svg></template>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-logo">🏯 Samurai Sushi</div>
-    <p class="footer-text">
-      © 2024 Samurai Sushi. Todos os direitos reservados.<br>
-      Feito com <span>♥</span> e muito wasabi.
-    </p>
-  </footer>
+<section class="barca" aria-label="Barca do Samurai">
+  <figure class="frame"><img src="img/barca.webp" alt="Barca simples de madeira com sashimis e nigiris de salmão, atum e peixe branco, shissô e wasabi" width="1800" height="763" loading="lazy"></figure>
+  <div class="barca-copy">
+    <p class="eyebrow label" data-i18n="boat.eyebrow">Barcas</p>
+    <h2 class="title" data-i18n="boat.title">A pureza do peixe, para compartilhar</h2>
+    <p class="subtitulo" data-i18n="boat.lede">A seleção do chef, para a mesa</p>
+    <p class="tags label" data-i18n="boat.tags">Sashimis · Nigiris · Para compartilhar</p>
+    <a class="link arrow" href="#contato" data-i18n="cta.group">Reservar para o grupo</a>
+  </div>
+</section>
 
-  <!-- Scripts -->
-  <script src="main.js"></script>
-</body>
-</html>
+<section class="sec tinta" id="onde">
+  <span class="mark-kanji" lang="ja" aria-hidden="true">道</span>
+  <div class="wrap where">
+    <div>
+      <p class="eyebrow label" data-i18n="nav.where">Onde estamos</p>
+      <h2 class="title" data-i18n="where.title">Venha nos encontrar em Brasília</h2>
+      <p class="subtitulo" data-i18n="where.lede">Chegar com calma, ficar sem pressa</p>
+      <figure class="frame where-foto"><picture><source media="(max-width: 760px)" srcset="img/amb-fachada-v.webp"><img src="img/amb-fachada.webp" alt="Fachada do Samurai Sushi com o letreiro laranja e o kanji 武士 no balcão" width="1536" height="1024" loading="lazy"></picture></figure>
+    </div>
+    <div class="where-side">
+      <dl class="where-info">
+        <div><dt class="label" data-i18n="where.addr">Endereço</dt><dd>CLSW 300 B, Bloco I, Loja 22<br>Sudoeste, Brasília · DF<br>70673-073</dd></div>
+        <div><dt class="label" data-i18n="where.hours">Horários</dt><dd data-i18n="where.tbc">A confirmar</dd></div>
+      </dl>
+      <div class="where-actions">
+        <a class="btn arrow" href="https://maps.app.goo.gl/1T4VF9JqJoqZmg8U8" target="_blank" rel="noopener" data-i18n="where.open">Abrir no Google Maps</a>
+        <a class="link arrow" href="https://maps.app.goo.gl/1T4VF9JqJoqZmg8U8" target="_blank" rel="noopener" data-i18n="where.route">Traçar rota</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <figure class="frame contato-img"><img src="img/cozinha-silhueta.webp" alt="Silhueta do sushiman em contraluz, finalizando um prato" width="1024" height="1536" loading="lazy" style="object-position: 62% 45%"></figure>
+  <div class="contato-body papel">
+    <span class="mark-kanji" lang="ja" aria-hidden="true">迎</span>
+    <p class="eyebrow label" data-i18n="nav.contact">Contato</p>
+    <h2 class="title" data-i18n="contact.title">Venha viver essa experiência</h2>
+    <p class="subtitulo" data-i18n="contact.lede">Sua mesa espera por você</p>
+    <div class="place">
+      <svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M8 19s7-6.2 7-11.5A7 7 0 0 0 1 7.5C1 12.8 8 19 8 19Z"/><circle cx="8" cy="7.5" r="2.5"/></svg>
+      <div><strong>Samurai Sushi</strong>CLSW 300 B, Bl. I, Loja 22 · Sudoeste, Brasília · @samuraisushibsb</div>
+    </div>
+    <form class="booking" id="booking" novalidate>
+      <p class="label booking-title" data-i18n="f.title">Reserva</p>
+      <div class="fields">
+        <label class="full"><span class="label" data-i18n="f.name">Nome</span><input id="f-name" name="name" type="text" autocomplete="name" required></label>
+        <label><span class="label" data-i18n="f.date">Data</span><input id="f-date" name="date" type="date" required></label>
+        <label><span class="label" data-i18n="f.time">Horário</span><input id="f-time" name="time" type="time" required></label>
+        <label><span class="label" data-i18n="f.guests">Pessoas</span><input id="f-guests" name="guests" type="number" min="1" max="20" value="2" required></label>
+        <label><span class="label" data-i18n="f.exp">Experiência</span><select id="f-exp" name="exp"><option value="itamae" data-i18n="f.exp.itamae">Sequência Itamae</option><option value="carta" data-i18n="f.exp.carta">Cardápio à la carte</option></select></label>
+      </div>
+      <button class="btn arrow" type="submit" data-i18n="f.submit">Reservar pelo WhatsApp</button>
+      <p class="form-hint" data-i18n="f.note">O WhatsApp abre com a sua mensagem pronta. É só enviar.</p>
+      <p class="form-status" id="form-status" hidden></p>
+    </form>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-brand">
+      <a class="mark" href="#hero" aria-label="Samurai Sushi, início"><img class="sym" src="assets/logo-simbolo.svg" alt="" width="48" height="44"><img class="word" src="assets/logo-wordmark.svg" alt="Samurai Sushi" width="150" height="47"></a>
+      <p class="foot-tag" data-i18n="foot.tag">Tradição. Técnica. Excelência.</p>
+      <a class="btn arrow reserva" href="#contato" data-i18n="cta.book">Fazer reserva</a>
+    </div>
+    <div class="foot-col"><p class="label" data-i18n="foot.explore">Navegar</p>
+      <a href="#cardapio" data-i18n="nav.menu">Cardápio</a><a href="#sequencia" data-i18n="nav.seq">Sequência Itamae</a><a href="#experiencia" data-i18n="nav.exp">Experiência</a><a href="#galeria" data-i18n="nav.gal">Galeria</a><a href="#onde" data-i18n="nav.where">Onde estamos</a></div>
+    <div class="foot-col"><p class="label" data-i18n="foot.visit">Visite</p><span>CLSW 300 B, Bl. I, Loja 22<br>Sudoeste, Brasília · DF</span><a href="https://maps.app.goo.gl/1T4VF9JqJoqZmg8U8" target="_blank" rel="noopener" data-i18n="where.route">Traçar rota</a><a href="https://www.instagram.com/samuraisushibsb/" target="_blank" rel="noopener">Instagram @samuraisushibsb</a></div>
+    <div class="foot-col"><p class="label" data-i18n="foot.lang">Idioma</p>
+      <div class="lang lang-foot" role="group" aria-label="Idioma"><button type="button" data-lang="pt" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="ja" aria-pressed="false" lang="ja">日本語</button></div></div>
+  </div>
+  <div class="wrap foot-base"><span class="note" data-i18n="foot.note">@samuraisushibsb · Protótipo: imagens geradas por IA, reserva provisória</span><span class="note">© Samurai Sushi · Brasília</span></div>
+</footer>
+</main>
+
+<a class="guia" id="guia" href="#contato" aria-label="Ir para a reserva">
+  <span class="guia-enso"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trilha" cx="50" cy="50" r="42"/><path class="traco" pathLength="1" d="M 64 9 A 42 42 0 1 1 41 9.9" filter="url(#pincel)"/></svg><img class="sam-base" src="assets/logo-simbolo.svg" alt="" width="36" height="33"><img class="sam-cor" src="assets/logo-simbolo.svg" alt="" width="36" height="33"></span>
+  <span class="guia-dica label" data-i18n="guia.dica">Role até o fim</span>
+</a>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true"><filter id="pincel"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
+
+<div class="foto-zoom" id="foto-zoom" role="dialog" aria-modal="true" aria-label="Foto do prato" hidden>
+  <button class="close label" type="button" data-i18n="ui.close">Fechar</button>
+  <figure><img alt=""><figcaption><div class="fz-linha"><b></b><span class="fz-preco"></span></div><p></p></figcaption></figure>
+</div>
+<div class="carta" id="carta" role="dialog" aria-modal="true" aria-labelledby="carta-t" hidden>
+  <div class="carta-topo">
+    <p class="eyebrow label" id="carta-t" data-i18n="nav.menu">Cardápio</p>
+    <button class="close label" id="carta-fechar" type="button" data-i18n="ui.close">Fechar</button>
+  </div>
+  <div class="carta-abas" id="carta-abas" role="tablist" aria-labelledby="carta-t"></div>
+  <div class="carta-corpo" id="carta-corpo" role="tabpanel" tabindex="-1"></div>
+</div>
+
+<script>
+// O scroll funciona como a barra de reprodução: progresso 0 → 1 escolhe o quadro.
+(() => {
+  const COUNT = 59;
+  const src = (i) => `gota/g${String(i).padStart(3, "0")}.webp`;
+  const canvas = document.getElementById("film");
+  const ctx = canvas.getContext("2d");
+  const track = document.getElementById("hero");
+  const status = document.getElementById("load-status");
+  const chapters = [...document.querySelectorAll("[data-from]")];
+  const meter = document.getElementById("meter-fill");
+  const heroBar = document.getElementById("hero-progress");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const frames = new Array(COUNT);
+  let loaded = 0, drawn = -1, shown = 0, desenhado = -1;
+
+  const clamp01 = (t) => Math.min(1, Math.max(0, t));
+
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(canvas.clientWidth * dpr);
+    canvas.height = Math.round(canvas.clientHeight * dpr);
+    drawn = -1;
+  }
+
+  // Desenha como object-fit: cover, mantendo o prato no centro.
+  function draw(i) {
+    let img = frames[i];
+    if (!img || !img.complete || !img.naturalWidth) {
+      for (let k = 1; k < COUNT && !(img && img.naturalWidth); k++) {
+        img = frames[i - k] || frames[i + k];
+      }
+      if (!img || !img.naturalWidth) return;
+    }
+    const cw = canvas.width, ch = canvas.height;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    // Tela vertical: em vez de cortar as laterais, amplia um pouco além da largura
+    // e posiciona o filme acima do texto; o preto do fundo completa o resto.
+    const portrait = cw / ch < 1;
+    const s = portrait ? (cw / iw) * 1.9 : Math.max(cw / iw, ch / ih);
+    const w0 = iw * s, h0 = ih * s;
+    const y0 = portrait ? ch * 0.33 - h0 / 2 : (ch - h0) / 2;
+    // No celular, centraliza o assunto (o atum fica a ~62% da largura do filme).
+    const x0 = portrait ? Math.min(0, Math.max(cw - w0, cw / 2 - w0 * 0.62)) : (cw - w0) / 2;
+    // Câmera: com a rolagem, aproxima até 15% em torno do atum e da gota e leva esse ponto para o centro.
+    const t = shown * shown * (3 - 2 * shown);
+    const fx = portrait ? 0.62 : 0.68, fy = portrait ? 0.4 : 0.36;
+    const px = x0 + fx * w0, py = y0 + fy * h0;
+    const tx = portrait ? cw / 2 : cw * 0.68, ty = portrait ? py : ch * 0.5;
+    const z = 1 + 0.15 * t;
+    const w = w0 * z, h = h0 * z;
+    let x = px + (tx - px) * t - fx * w, y = py + (ty - py) * t - fy * h;
+    if (!portrait) { x = Math.min(0, Math.max(cw - w, x)); y = Math.min(0, Math.max(ch - h, y)); }
+    ctx.fillStyle = "#0d0d0d";
+    ctx.fillRect(0, 0, cw, ch);
+    ctx.drawImage(img, x, y, w, h);
+    // As luzes do fundo acendem durante a queda: uma sombra no canto de cima à esquerda cresce junto e mantém o canto escuro.
+    const sombra = ctx.createRadialGradient(cw * 0.36, ch * 0.22, 0, cw * 0.36, ch * 0.22, Math.max(cw, ch) * 0.5);
+    sombra.addColorStop(0, `rgba(12,11,8,${(0.82 * t).toFixed(3)})`);
+    sombra.addColorStop(0.55, `rgba(12,11,8,${(0.5 * t).toFixed(3)})`);
+    sombra.addColorStop(1, "rgba(12,11,8,0)");
+    ctx.fillStyle = sombra;
+    ctx.fillRect(0, 0, cw, ch);
+    if (portrait) { // dissolve a borda de baixo do filme no preto
+      const g = ctx.createLinearGradient(0, y + h * 0.8, 0, y + h);
+      g.addColorStop(0, "rgba(13,13,13,0)");
+      g.addColorStop(1, "rgba(13,13,13,1)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, y + h * 0.8, cw, h * 0.2 + 1);
+    }
+    drawn = i;
+  }
+
+  function progress() {
+    const total = track.offsetHeight - innerHeight;
+    return total > 0 ? clamp01((scrollY - track.parentElement.offsetTop) / total) : 0;
+  }
+
+  function tick() {
+    const target = progress();
+    shown = reduce ? target : shown + (target - shown) * 0.18;
+    if (Math.abs(target - shown) < 0.0005) shown = target;
+    const i = Math.round(shown * (COUNT - 1));
+    if (i !== drawn || shown !== desenhado) { draw(i); desenhado = shown; }
+    for (const el of chapters) {
+      const a = +el.dataset.from, b = +el.dataset.to, e = 0.04;
+      const o = Math.min(clamp01((shown - a) / e + (a === 0 ? 1 : 0)), clamp01((b - shown) / e + (b === 1 ? 1 : 0)));
+      el.style.opacity = o.toFixed(3);
+      if (!el.classList.contains("scroll-cue")) el.style.transform = `translateY(${((1 - o) * 12).toFixed(1)}px)`;
+    }
+    meter.style.transform = `scaleY(${shown.toFixed(4)})`;
+    heroBar.style.transform = `scaleX(${shown.toFixed(4)})`;
+    requestAnimationFrame(tick);
+  }
+
+  // Abertura: fica no mínimo 2,4 s (para a logo terminar de aparecer) e no máximo 7 s, mesmo com a rede lenta.
+  const abertura = document.getElementById("abertura");
+  document.body.classList.add("js-marca");
+  if (!abertura || reduce) document.body.classList.add("abriu");
+  const abLinha = abertura && abertura.querySelector(".ab-linha i");
+  const abInicio = performance.now();
+  let abFechou = false;
+  function fecharAbertura() {
+    if (!abertura || abFechou) return;
+    abFechou = true;
+    setTimeout(() => {
+      abertura.classList.add("sai");
+      document.body.classList.add("abriu");
+      setTimeout(() => abertura.remove(), reduce ? 450 : 1300);
+    }, Math.max(0, (reduce ? 700 : 2400) - (performance.now() - abInicio)));
+  }
+  setTimeout(fecharAbertura, 7000);
+
+  function load(i) {
+    const img = new Image();
+    img.decoding = "async";
+    img.onload = img.onerror = () => {
+      loaded++;
+      status.textContent = `${LOADING[lang] || LOADING.pt} ${Math.round((loaded / COUNT) * 100)}%`;
+      if (abLinha) abLinha.style.setProperty("--p", (loaded / COUNT).toFixed(3));
+      if (loaded === COUNT) { status.hidden = true; fecharAbertura(); }
+      if (Math.abs(i - drawn) <= 1 || drawn === -1) drawn = -1;
+    };
+    img.src = src(i);
+    frames[i] = img;
+  }
+
+  // Primeiro quadro primeiro; depois de 8 em 8 para o scroll já funcionar cedo; depois o resto.
+  load(0);
+  for (let i = 8; i < COUNT; i += 8) load(i);
+  for (let i = 1; i < COUNT; i++) if (!frames[i]) load(i);
+
+
+  // Idiomas: PT (padrão), EN e JA. A escolha fica salva só neste navegador.
+  const I18N = {"nav.menu": {"pt": "Cardápio", "en": "Menu", "ja": "お品書き"}, "nav.seq": {"pt": "Sequência Itamae", "en": "Itamae sequence", "ja": "板前のおまかせ"}, "nav.exp": {"pt": "Experiência", "en": "Experience", "ja": "体験"}, "nav.gal": {"pt": "Galeria", "en": "Gallery", "ja": "ギャラリー"}, "nav.contact": {"pt": "Contato", "en": "Contact", "ja": "お問い合わせ"}, "cta.book": {"pt": "Fazer reserva", "en": "Book a table", "ja": "ご予約"}, "guia.dica": {"pt": "Role até o fim", "en": "Scroll to the end", "ja": "最後までご覧ください"}, "ui.close": {"pt": "Fechar", "en": "Close", "ja": "閉じる"}, "hero.label": {"pt": "Culinária japonesa · Brasília", "en": "Japanese cuisine · Brasília", "ja": "日本料理・ブラジリア"}, "ui.scroll": {"pt": "Scroll", "en": "Scroll", "ja": "スクロール"}, "hero.rev": {"pt": "Avaliações no Google", "en": "Google reviews", "ja": "Googleレビュー"}, "hero.down": {"pt": "Role para descobrir", "en": "Scroll to discover", "ja": "スクロールして見る"}, "menu.title": {"pt": "Sabores em equilíbrio", "en": "Flavours in balance", "ja": "調和する味わい"}, "menu.lede": {"pt": "Técnica japonesa, olhar contemporâneo", "en": "Japanese technique, a contemporary eye", "ja": "日本の技、現代の感性"}, "m1": {"pt": "Entradas", "en": "Starters", "ja": "前菜"}, "m1d": {"pt": "Leves, precisas e cheias de personalidade", "en": "Light, precise and full of character", "ja": "軽やかで繊細、個性あふれる一皿"}, "m2": {"pt": "Sashimis", "en": "Sashimi", "ja": "刺身"}, "m2d": {"pt": "A pureza do peixe em sua melhor forma", "en": "The purity of fish at its finest", "ja": "魚本来の美しさを、最良のかたちで"}, "m3": {"pt": "Nigiris", "en": "Nigiri", "ja": "握り"}, "m3d": {"pt": "O equilíbrio entre técnica e sabor", "en": "The balance of technique and flavour", "ja": "技と味の調和"}, "m4": {"pt": "Pratos quentes", "en": "Hot dishes", "ja": "温かい料理"}, "m4d": {"pt": "Receitas que surpreendem", "en": "Dishes that surprise", "ja": "驚きのある一皿"}, "m5d": {"pt": "Sete etapas que revelam a essência", "en": "Seven courses that reveal the essence", "ja": "本質を映す七つの品"}, "m6": {"pt": "Sobremesas", "en": "Desserts", "ja": "デザート"}, "m6d": {"pt": "Finalizações que ficam na memória", "en": "Endings to remember", "ja": "記憶に残る締めくくり"}, "m7": {"pt": "Bebidas", "en": "Drinks", "ja": "お飲み物"}, "c.ver": {"pt": "Ver o cardápio completo", "en": "See the full menu", "ja": "お品書きをすべて見る"}, "c.sushi": {"pt": "Sushis", "en": "Sushi", "ja": "鮨"}, "c.comb": {"pt": "Combinados", "en": "Platters", "ja": "盛り合わせ"}, "c.beb": {"pt": "Bebidas", "en": "Drinks", "ja": "お飲み物"}, "c.nota": {"pt": "Valores em reais · cardápio sujeito a alterações", "en": "Prices in Brazilian reais · menu subject to change", "ja": "価格はレアル表示・内容は変更になる場合があります"}, "c.alcool": {"pt": "Se beber, não dirija", "en": "Please drink responsibly", "ja": "飲酒運転は禁止です"}, "m7d": {"pt": "Saquês, drinks autorais e vinhos", "en": "Sake, signature cocktails and wine", "ja": "日本酒・オリジナルカクテル・ワイン"}, "om.novo": {"pt": "Lançamento exclusivo", "en": "Exclusive launch", "ja": "限定のお披露目"}, "om.sub": {"pt": "sete etapas · nove pratos · pescados da casa e da estação", "en": "seven courses · nine dishes · house and seasonal fish", "ja": "七品・九皿・自家の魚と旬の魚"}, "om.titulo": {"pt": "Sequência Itamae", "en": "The Itamae Sequence", "ja": "板前のおまかせ"}, "om.promo": {"pt": "Valor promocional até 21 de novembro", "en": "Introductory price until November 21", "ja": "11月21日までの特別価格"}, "om.dias": {"pt": "Quinta, sexta e sábado · das 18h às 21h30", "en": "Thursday, Friday and Saturday · 6 pm to 9:30 pm", "ja": "木・金・土　18:00〜21:30"}, "om.limite": {"pt": "Limitada a 30 sequências por noite", "en": "Limited to 30 sequences per night", "ja": "各夜30名様限定"}, "om.ritmo": {"pt": "Servida à mesa completa · cerca de 90 minutos", "en": "Served to the whole table · about 90 minutes", "ja": "テーブル全員で・約90分"}, "om.lede": {"pt": "Uma experiência exclusiva do Samurai, conduzida pelas mãos do chef.", "en": "An experience exclusive to Samurai, guided by the chef's hands.", "ja": "サムライだけの、料理長に委ねるひととき。"}, "om.preco": {"pt": "Por pessoa", "en": "Per person", "ja": "お一人様"}, "om.cta": {"pt": "Reservar a experiência", "en": "Reserve the experience", "ja": "ご予約はこちら"}, "om.selo1": {"pt": "Único rodízio de Brasília certificado pelo Ministério da Agricultura do Japão", "en": "The only all-you-can-eat sushi house in Brasília certified by Japan's Ministry of Agriculture", "ja": "ブラジリアで唯一、日本の農林水産省の認証を受けた食べ放題の店"}, "om.selo2": {"pt": "De culinária japonesa nas mãos do nosso chef", "en": "Of Japanese cuisine in our chef's hands", "ja": "料理長が培ってきた日本料理の経験"}, "om.selo1t": {"pt": "Certificado JETRO", "en": "JETRO certified", "ja": "JETRO認証"}, "om.selo2t": {"pt": "+20 anos", "en": "20+ years", "ja": "二十年以上"}, "om.selo3t": {"pt": "Peixe do dia", "en": "Fish of the day", "ja": "本日の魚"}, "om.selo3": {"pt": "Pescados que mudam com a chegada do mercado", "en": "Fish that change with each market delivery", "ja": "市場の入荷とともに変わる魚"}, "om.percurso": {"pt": "O percurso", "en": "The journey", "ja": "品書き"}, "om.harm": {"pt": "Harmonização com saquês", "en": "Sake pairing", "ja": "日本酒のペアリング"}, "om.harmd": {"pt": "Quatro doses da nossa carta, uma para cada bloco da sequência, e umeshu para acompanhar a sobremesa.", "en": "Four pours from our list, one for each part of the sequence, and umeshu to go with dessert.", "ja": "当店の銘柄から四杯、品ごとに一杯ずつ。デザートには梅酒を。"}, "om.nota1": {"pt": "Abertura e quente leve chegam completos, com os dois pratos de cada etapa. Você escolhe só a sobremesa, ou deixa com o chef, que indica a mousse de matchá.", "en": "The opening and the light warm course arrive complete, with both dishes of each course. You only choose the dessert, or leave it to the chef, who recommends the matcha mousse.", "ja": "先付と温物は二品ともお出しします。お選びいただくのはデザートのみ。迷われたら、料理長のおすすめは抹茶のムースです。"}, "om.nota2": {"pt": "Os peixes do dia mudam com o mercado; nossa equipe informa os de hoje. Avise alergias e restrições antes da primeira etapa.", "en": "The fish of the day change with the market; our team will tell you today's. Please mention allergies and restrictions before the first course.", "ja": "本日の魚は市場によって変わります。スタッフがご案内します。アレルギーや食事制限は最初の品の前にお知らせください。"}, "seq.lede": {"pt": "Toque em cada etapa para ver o que chega à mesa.", "en": "Tap each course to see what comes to the table.", "ja": "各品を選ぶと、供される料理をご覧いただけます。"}, "s1": {"pt": "Abertura", "en": "Opening", "ja": "先付"}, "s2": {"pt": "Sashimi Edo", "en": "Edo sashimi", "ja": "江戸前造り"}, "s3": {"pt": "Quente leve", "en": "Light warm", "ja": "温物"}, "s4": {"pt": "Nigiri e Gunkan", "en": "Nigiri and gunkan", "ja": "握りと軍艦"}, "s5": {"pt": "Quente", "en": "Hot", "ja": "焼物"}, "s6": {"pt": "Futomaki Edo", "en": "Edo futomaki", "ja": "江戸太巻き"}, "s7": {"pt": "Sobremesa", "en": "Dessert", "ja": "甘味"}, "exp.title": {"pt": "Mais que sushi, uma experiência", "en": "More than sushi, an experience", "ja": "鮨を超えた、ひとつの体験"}, "exp.lede": {"pt": "Para todos os sentidos", "en": "For every sense", "ja": "五感で味わう"}, "gal.title": {"pt": "Detalhes que ficam", "en": "Details that linger", "ja": "心に残る一瞬"}, "gal.lede": {"pt": "Atmosfera única", "en": "A unique atmosphere", "ja": "唯一無二の空間"}, "boat.eyebrow": {"pt": "Barcas", "en": "Sushi boats", "ja": "舟盛り"}, "boat.title": {"pt": "A pureza do peixe, para compartilhar", "en": "The purity of fish, to share", "ja": "分かち合う、魚の美しさ"}, "cta.group": {"pt": "Reservar para o grupo", "en": "Book for your group", "ja": "グループで予約する"}, "contact.title": {"pt": "Venha viver essa experiência", "en": "Come and live the experience", "ja": "この体験を、ぜひ"}, "contact.lede": {"pt": "Sua mesa espera por você", "en": "Your table awaits", "ja": "お席をご用意してお待ちしています"}, "foot.note": {"pt": "@samuraisushibsb · Protótipo: imagens geradas por IA, reserva provisória", "en": "@samuraisushibsb · Prototype: AI-generated images, provisional booking", "ja": "@samuraisushibsb ・ プロトタイプ：画像はAI生成、予約は仮のものです"}, "seq.course": {"pt": "Etapa", "en": "Course", "ja": "品目"}, "exp.quote": {"pt": "O sushi começa muito antes do balcão: na escolha do peixe, no ponto do arroz, no silêncio do preparo.", "en": "Sushi begins long before the counter: in choosing the fish, in the rice, in the quiet of preparation.", "ja": "鮨は、カウンターに立つずっと前から始まっている。魚を選び、シャリを整え、静かに仕込む時間から。"}, "p1": {"pt": "Técnica", "en": "Technique", "ja": "技術"}, "p1d": {"pt": "Cortes precisos e arroz feito na hora.", "en": "Precise cuts and rice made to order.", "ja": "正確な包丁と、その都度合わせるシャリ。"}, "p2": {"pt": "Estação", "en": "Season", "ja": "季節"}, "p2d": {"pt": "O melhor peixe de cada época do ano.", "en": "The finest fish of every season.", "ja": "季節ごとに、最良の魚を。"}, "p3": {"pt": "Hospitalidade", "en": "Hospitality", "ja": "おもてなし"}, "p3d": {"pt": "Cada visita recebida com atenção.", "en": "Every visit received with care.", "ja": "ひとつひとつの時間を、丁寧に。"}, "g1": {"pt": "Máscara hannya", "en": "Hannya mask", "ja": "般若の面"}, "g2": {"pt": "Bambu", "en": "Bamboo", "ja": "竹"}, "g3": {"pt": "Wagasa", "en": "Wagasa", "ja": "和傘"}, "g4": {"pt": "Amuletos da casa", "en": "House charms", "ja": "縁起物"}, "g5": {"pt": "Texturas", "en": "Textures", "ja": "質感"}, "boat.lede": {"pt": "A seleção do chef, para a mesa", "en": "The chef's selection, for the table", "ja": "料理長の舟盛り"}, "boat.tags": {"pt": "Sashimis · Nigiris · Para compartilhar", "en": "Sashimi · Nigiri · To share", "ja": "刺身・握り・みんなで"}, "f.name": {"pt": "Nome", "en": "Name", "ja": "お名前"}, "f.date": {"pt": "Data", "en": "Date", "ja": "日付"}, "f.time": {"pt": "Horário", "en": "Time", "ja": "時間"}, "f.guests": {"pt": "Pessoas", "en": "Guests", "ja": "人数"}, "f.exp": {"pt": "Experiência", "en": "Experience", "ja": "ご利用"}, "f.exp.itamae": {"pt": "Sequência Itamae", "en": "Itamae sequence", "ja": "板前のおまかせ"}, "f.exp.carta": {"pt": "Cardápio à la carte", "en": "À la carte menu", "ja": "アラカルト"}, "f.abrir": {"pt": "Abrir o WhatsApp com a mensagem", "en": "Open WhatsApp with the message", "ja": "メッセージ入りでWhatsAppを開く"}, "f.erro": {"pt": "Preencha nome, data, horário e pessoas.", "en": "Please fill in name, date, time and guests.", "ja": "お名前・日付・時間・人数をご入力ください。"}, "f.itamae": {"pt": "A Sequência Itamae é servida de quinta a sábado, das 18h às 21h30.", "en": "The Itamae sequence is served Thursday to Saturday, 6 pm to 9:30 pm.", "ja": "板前のおまかせは木・金・土の18:00〜21:30にご提供します。"}, "f.submit": {"pt": "Reservar pelo WhatsApp", "en": "Book on WhatsApp", "ja": "WhatsAppで予約"}, "f.note": {"pt": "O WhatsApp abre com a sua mensagem pronta. É só enviar.", "en": "WhatsApp opens with your message ready. Just send it.", "ja": "メッセージ入りでWhatsAppが開きます。そのまま送信してください。"}, "f.title": {"pt": "Reserva", "en": "Booking", "ja": "ご予約"}, "foot.tag": {"pt": "Tradição. Técnica. Excelência.", "en": "Tradition. Technique. Excellence.", "ja": "伝統。技。卓越。"}, "foot.explore": {"pt": "Navegar", "en": "Explore", "ja": "サイト"}, "foot.visit": {"pt": "Visite", "en": "Visit", "ja": "所在地"}, "foot.lang": {"pt": "Idioma", "en": "Language", "ja": "言語"}, "rev.eyebrow": {"pt": "Avaliações", "en": "Reviews", "ja": "お客様の声"}, "rev.title": {"pt": "O que dizem nossos convidados", "en": "What our guests say", "ja": "お客様の声"}, "rev.count": {"pt": "avaliações no Google", "en": "Google reviews", "ja": "件のGoogleレビュー"}, "rev.all": {"pt": "Ver no Google Maps", "en": "See on Google Maps", "ja": "Googleマップで見る"}, "nav.where": {"pt": "Onde estamos", "en": "Find us", "ja": "アクセス"}, "where.title": {"pt": "Venha nos encontrar em Brasília", "en": "Find us in Brasília", "ja": "ブラジリアでお待ちしています"}, "where.lede": {"pt": "Chegar com calma, ficar sem pressa", "en": "Arrive calmly, stay unhurried", "ja": "ゆっくりと、心ゆくまで"}, "where.addr": {"pt": "Endereço", "en": "Address", "ja": "住所"}, "where.hours": {"pt": "Horários", "en": "Hours", "ja": "営業時間"}, "where.tbc": {"pt": "A confirmar", "en": "To be confirmed", "ja": "確認中"}, "where.open": {"pt": "Abrir no Google Maps", "en": "Open in Google Maps", "ja": "Googleマップで開く"}, "where.route": {"pt": "Traçar rota", "en": "Get directions", "ja": "経路を調べる"}};
+  const LOADING = { pt: "Carregando", en: "Loading", ja: "読み込み中" };
+  let lang = "pt";
+  try { const saved = localStorage.getItem("samurai-lang"); if (saved && LOADING[saved]) lang = saved; } catch (e) {}
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l === "pt" ? "pt-BR" : l;
+    document.querySelectorAll("[data-i18n]").forEach((el) => { const t = I18N[el.dataset.i18n]; if (t) el.textContent = t[l]; });
+    document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+    try { localStorage.setItem("samurai-lang", l); } catch (e) {}
+    if (typeof renderSeq === "function") renderSeq();
+    renderCarta();
+  }
+  document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+
+  // Cardápio: ao passar pelo item, a imagem ao lado troca com um cruzamento suave.
+  const layers = [...document.querySelectorAll(".menu-img")];
+  let front = 0;
+  function showMenuImg(a) {
+    document.querySelectorAll(".menu a.is-active").forEach((x) => x.classList.remove("is-active"));
+    a.classList.add("is-active");
+    const cur = layers[front];
+    if (cur.getAttribute("src") === a.dataset.img) return;
+    const next = layers[1 - front];
+    next.src = a.dataset.img;
+    next.style.objectPosition = a.dataset.pos || "50% 50%";
+    const swap = () => { cur.classList.remove("is-on"); next.classList.add("is-on"); front = 1 - front; };
+    next.complete ? swap() : next.addEventListener("load", swap, { once: true });
+  }
+  document.querySelectorAll(".menu a[data-img]").forEach((a) => {
+    a.addEventListener("mouseenter", () => showMenuImg(a));
+    a.addEventListener("focus", () => showMenuImg(a));
+  });
+
+
+  // Sequência do chef: escolher uma etapa troca a imagem e mostra os pratos dela (do cardápio da sequência).
+  const SEQ = {"s1": {"tag": {"pt": "as duas", "en": "both", "ja": "二品"}, "pratos": [{"n": {"pt": "Usuzukuri de polvo", "en": "Octopus usuzukuri", "ja": "蛸の薄造り"}, "d": {"pt": "No ponzu, azeite de nori, tobiko e furikake de shissô.", "en": "With ponzu, nori oil, tobiko and shiso furikake.", "ja": "ポン酢、海苔オイル、とびこ、紫蘇のふりかけ。"}}, {"n": {"pt": "Chips de nori com folha de arroz", "en": "Nori and rice paper chips", "ja": "海苔とライスペーパーのチップス"}, "d": {"pt": "Com tartar de salmão zuke, maionese japonesa e ovas de salmão.", "en": "With salmon zuke tartare, Japanese mayonnaise and salmon roe.", "ja": "鮭の漬けタルタル、和風マヨネーズ、いくら。"}}]}, "s2": {"tag": {"pt": "do chef · 8 cortes", "en": "chef's choice · 8 cuts", "ja": "おまかせ・八切れ"}, "pratos": [{"n": {"pt": "Salmão zuke", "en": "Salmon zuke", "ja": "鮭の漬け"}, "d": {"pt": "", "en": "", "ja": ""}}, {"n": {"pt": "Atum em nori japonesa", "en": "Tuna in Japanese nori", "ja": "鮪の海苔巻き"}, "d": {"pt": "", "en": "", "ja": ""}}, {"n": {"pt": "Hamachi japonês", "en": "Japanese hamachi", "ja": "ハマチ"}, "d": {"pt": "", "en": "", "ja": ""}}, {"n": {"pt": "Peixe do dia", "en": "Fish of the day", "ja": "本日の魚"}, "d": {"pt": "", "en": "", "ja": ""}}]}, "s3": {"tag": {"pt": "os dois", "en": "both", "ja": "二品"}, "pratos": [{"n": {"pt": "Chawanmushi", "en": "Chawanmushi", "ja": "茶碗蒸し"}, "d": {"pt": "Com salsa de cogumelos trufados e dashi de shiitake.", "en": "With truffled mushroom salsa and shiitake dashi.", "ja": "トリュフ風味のきのこのサルサ、椎茸出汁。"}}, {"n": {"pt": "Gyoza de peixe branco", "en": "White fish gyoza", "ja": "白身魚の餃子"}, "d": {"pt": "Com acelga, gengibre e cebolinha.", "en": "With napa cabbage, ginger and spring onion.", "ja": "白菜、生姜、葱。"}}]}, "s4": {"tag": {"pt": "do chef · 4 peças", "en": "chef's choice · 4 pieces", "ja": "おまかせ・四貫"}, "pratos": [{"n": {"pt": "Barriga de salmão maçaricada", "en": "Torched salmon belly", "ja": "炙りサーモンハラス"}, "d": {"pt": "Com manteiga clarificada trufada, flor de sal e zest de limão siciliano.", "en": "With truffled clarified butter, flaky salt and lemon zest.", "ja": "トリュフ香る澄ましバター、フルール・ド・セル、レモンの皮。"}}, {"n": {"pt": "Atum com foie gras", "en": "Tuna with foie gras", "ja": "鮪とフォアグラ"}, "d": {"pt": "Tarê e farofa de panko com avelã.", "en": "Tare and hazelnut panko crumb.", "ja": "たれ、ヘーゼルナッツ入りパン粉。"}}, {"n": {"pt": "Gunkan de vieira japonesa com limão yuzu", "en": "Japanese scallop gunkan with yuzu", "ja": "帆立の軍艦、柚子"}, "d": {"pt": "", "en": "", "ja": ""}}, {"n": {"pt": "Peixe do dia à moda do chef", "en": "Fish of the day, the chef's way", "ja": "本日の魚、料理長流"}, "d": {"pt": "", "en": "", "ja": ""}}], "nota": {"pt": "Todos os nigiris e o gunkan vão com wasabi.", "en": "Every nigiri and the gunkan are served with wasabi.", "ja": "握りと軍艦はすべて山葵入り。"}}, "s5": {"tag": {"pt": "do chef", "en": "chef's choice", "ja": "おまかせ"}, "pratos": [{"n": {"pt": "Black cod assado em shiro missô", "en": "Black cod roasted in shiro miso", "ja": "銀鱈の西京焼き"}, "d": {"pt": "48 horas de marinada, purê de couve-flor no dashi e tempurá de shissô.", "en": "Marinated for 48 hours, with cauliflower purée in dashi and shiso tempura.", "ja": "四十八時間漬け込み。カリフラワーの出汁ピュレ、紫蘇の天ぷら。"}}]}, "s6": {"tag": {"pt": "do chef · 2 peças", "en": "chef's choice · 2 pieces", "ja": "おまかせ・二切れ"}, "pratos": [{"n": {"pt": "Futomaki Edo", "en": "Edo futomaki", "ja": "江戸前太巻き"}, "d": {"pt": "Tamagoyaki, enguia, camarão, shiitake em dashi, takuan, shissô e pepino.", "en": "Tamagoyaki, eel, shrimp, shiitake simmered in dashi, takuan, shiso and cucumber.", "ja": "玉子焼き、鰻、海老、椎茸の含め煮、沢庵、紫蘇、胡瓜。"}}]}, "s7": {"tag": {"pt": "escolha uma", "en": "choose one", "ja": "お好みで一品"}, "pratos": [{"n": {"pt": "Chokko pie", "en": "Chokko pie", "ja": "チョコパイ"}, "d": {"pt": "Mousse de chocolate meio amargo com wasabi, base crocante de Oreo e cobertura de chocolate.", "en": "Bittersweet chocolate and wasabi mousse on a crisp Oreo base, with a chocolate coating.", "ja": "山葵香るビターチョコレートのムース、オレオのクランチ、チョコレートがけ。"}}, {"n": {"pt": "Mousse de matchá e chocolate branco", "en": "Matcha and white chocolate mousse", "ja": "抹茶とホワイトチョコレートのムース"}, "d": {"pt": "Coulis de frutas vermelhas reduzido no saquê e tuile de amêndoas.", "en": "Red berry coulis reduced in sake and an almond tuile.", "ja": "日本酒で煮詰めた赤い果実のクーリ、アーモンドのチュイル。"}}]}};
+  const seqLayers = [...document.querySelectorAll(".seq-img")];
+  let seqFront = 0, seqKey = "s1", seqTimer = 0, seqFotos = [], seqIdx = 0;
+  function seqShow(src) {
+    const cur = seqLayers[seqFront], next = seqLayers[1 - seqFront];
+    if (cur.getAttribute("src") === src) return;
+    next.src = src;
+    const swap = () => { cur.classList.remove("is-on"); next.classList.add("is-on"); seqFront = 1 - seqFront; };
+    next.complete ? swap() : next.addEventListener("load", swap, { once: true });
+  }
+  function renderSeq() {
+    const b = document.querySelector(`.step[data-key="${seqKey}"]`);
+    document.getElementById("seq-n").textContent = b.querySelector(".n").textContent;
+    document.getElementById("seq-name").textContent = I18N[seqKey][lang];
+    document.getElementById("seq-tag").textContent = SEQ[seqKey].tag[lang];
+    const lista = document.getElementById("seq-pratos");
+    lista.replaceChildren(...SEQ[seqKey].pratos.map((pr) => {
+      const li = document.createElement("li"), nome = document.createElement("b");
+      nome.textContent = pr.n[lang];
+      li.append(nome, pr.d[lang]);
+      return li;
+    }));
+    if (SEQ[seqKey].nota) { const li = document.createElement("li"); li.className = "seq-nota"; li.textContent = SEQ[seqKey].nota[lang]; lista.append(li); }
+  }
+  document.querySelectorAll(".step").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".step").forEach((x) => { x.classList.toggle("is-active", x === b); x.setAttribute("aria-pressed", String(x === b)); });
+    seqKey = b.dataset.key; renderSeq();
+    // Etapas com dois pratos alternam as fotos (data-img separado por "|").
+    clearInterval(seqTimer); seqFotos = b.dataset.img.split("|"); seqIdx = 0;
+    seqShow(seqFotos[0]);
+    if (seqFotos.length > 1) seqTimer = setInterval(() => { seqIdx = (seqIdx + 1) % seqFotos.length; seqShow(seqFotos[seqIdx]); }, 3800);
+  }));
+  // A etapa aberta ao carregar (01) também alterna as fotos.
+  seqFotos = document.querySelector(".step.is-active").dataset.img.split("|");
+  if (seqFotos.length > 1) seqTimer = setInterval(() => { seqIdx = (seqIdx + 1) % seqFotos.length; seqShow(seqFotos[seqIdx]); }, 3800);
+
+  // Reserva pelo WhatsApp: monta a mensagem com os dados do formulário e abre a conversa com o restaurante.
+  const WHATSAPP = "5561999872266"; // Samurai Sushi: 55 + DDD + número, só dígitos
+  const formStatus = document.getElementById("form-status");
+  const avisa = (k) => { formStatus.textContent = I18N[k][lang]; formStatus.hidden = false; };
+  // Botões "Reservar a experiência" da Sequência já deixam a opção marcada.
+  document.querySelectorAll('#sequencia a[href="#contato"]').forEach((a) => a.addEventListener("click", () => { document.getElementById("f-exp").value = "itamae"; }));
+  document.getElementById("booking").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = (id) => document.getElementById(id).value.trim();
+    const nome = v("f-name"), data = v("f-date"), hora = v("f-time"), pessoas = v("f-guests"), exp = v("f-exp");
+    if (!nome || !data || !hora || !pessoas) return avisa("f.erro");
+    if (exp === "itamae") {
+      const dia = new Date(data + "T12:00").getDay();       // 4 quinta, 5 sexta, 6 sábado
+      if (![4, 5, 6].includes(dia) || hora < "18:00" || hora > "21:30") return avisa("f.itamae");
+    }
+    formStatus.hidden = true;
+    const [a, m, d] = data.split("-");
+    const msg = ["Olá, gostaria de reservar uma mesa no Samurai Sushi.", "",
+      "Nome: " + nome, "Data: " + d + "/" + m + "/" + a, "Horário: " + hora, "Pessoas: " + pessoas,
+      "Experiência: " + (exp === "itamae" ? "Sequência Itamae" : "Cardápio à la carte")].join("\n");
+    const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+    const w = window.open(url, "_blank", "noopener");
+    // Se o navegador bloquear a nova aba, deixa o link à mão.
+    formStatus.replaceChildren(); const lk = document.createElement("a"); lk.href = url; lk.target = "_blank"; lk.rel = "noopener";
+    lk.textContent = I18N["f.abrir"][lang]; formStatus.append(lk); formStatus.hidden = !!w;
+  });
+  setLang(lang);
+
+
+  // Menu: marca a seção visível. Blocos sobem levemente ao entrar (o estado visível é o padrão).
+  const navLinks = [...document.querySelectorAll(".nav a")];
+  // As camadas se sobrepõem na transição, então a seção atual vem da posição de layout, não da interseção.
+  const pilha = document.getElementById("pilha");
+  const camadas = [...pilha.children];
+  const topos = new Map();
+  const medir = () => { let y = pilha.offsetTop; for (const el of camadas) { topos.set(el, y); y += el.offsetHeight; } };
+  const spyIds = ["cardapio", "sequencia", "experiencia", "galeria", "onde", "contato"].map((id) => document.getElementById(id)).filter(Boolean);
+  const spy = () => {
+    const y = scrollY + innerHeight * 0.45;
+    let atual = null;
+    for (const el of spyIds) if (topos.get(el) <= y) atual = el;
+    navLinks.forEach((a) => a.classList.toggle("is-current", !!atual && a.getAttribute("href") === "#" + atual.id));
+  };
+  // Âncoras: o destino é calculado pelo layout, porque o deslocamento da transição move as camadas.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    const alvo = a && document.getElementById(a.getAttribute("href").slice(1));
+    if (!alvo) return;
+    const camada = camadas.find((c) => c.contains(alvo));
+    if (!camada) return;
+    e.preventDefault();
+    const dentro = alvo === camada ? 0 : alvo.getBoundingClientRect().top - camada.getBoundingClientRect().top;
+    const margem = alvo === camada && camada !== camadas[0] ? 64 : 0;
+    scrollTo({ top: Math.max(0, topos.get(camada) + dentro - margem), behavior: reduce ? "auto" : "smooth" });
+    history.replaceState(null, "", a.getAttribute("href"));
+  });
+  // Transição: enquanto a seguinte entra, a camada de baixo atrasa até 14% da tela (cabe no respiro inferior) e escurece.
+  const veus = [];
+  const cobrir = () => {
+    for (let i = 0; i < veus.length; i++) {
+      const c = clamp01(1 - camadas[i + 1].getBoundingClientRect().top / innerHeight);
+      veus[i].style.opacity = (c * 0.45).toFixed(3);
+      const vidro = clamp01(c * 1.6); // o vidro fica sólido quando a seção ainda está a 37% do topo
+      camadas[i + 1].classList.toggle("entrando", vidro > 0 && vidro < 1);
+      camadas[i + 1].style.setProperty("--in", vidro.toFixed(3));
+      camadas[i].style.transform = c > 0 ? `translate3d(0, ${(c * innerHeight * 0.14).toFixed(1)}px, 0)` : "";
+    }
+  };
+  if (!reduce) {
+    pilha.classList.add("pilha-on");
+    camadas.forEach((el, i) => {
+      el.classList.add("camada");
+      el.style.zIndex = i + 1;
+      if (i < camadas.length - 1) { const v = document.createElement("div"); v.className = "veu"; v.setAttribute("aria-hidden", "true"); el.appendChild(v); veus.push(v); }
+    });
+  }
+  const relayout = () => { medir(); if (!reduce) cobrir(); spy(); };
+  new ResizeObserver(relayout).observe(pilha);
+  addEventListener("scroll", () => { if (!reduce) cobrir(); spy(); }, { passive: true });
+  relayout();
+  if (!reduce && "IntersectionObserver" in window) {
+    const blocks = document.querySelectorAll(".sec .frame, .exp-quote, .pillars li, .booking");
+    const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.remove("pre"); io.unobserve(en.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    blocks.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top > innerHeight) { el.classList.add("settle", "pre"); io.observe(el); } });
+  }
+
+
+  // Avaliações do Google: preencher só com avaliações reais copiadas do perfil do Samurai.
+  // Formato: { nome: "Mariana S.", nota: 5, texto: "…", quando: "há 2 semanas" }
+  const GOOGLE = { media: 4.6, total: null, link: "https://maps.app.goo.gl/1T4VF9JqJoqZmg8U8", avaliacoes: [
+    {
+      "nome": "Andressa M.",
+      "foto": "img/salao.webp",
+      "nota": 5,
+      "quando": "10 meses atrás",
+      "texto": "Excelente experiência! Super indico! Fomos comemorar meu aniversário em casa e fomos muito bem atendidos. Quero parabenizar em especial, o atendimento magnífico prestado por Wilian e Hugo, eles fizeram nossa noite muito mais agradável e acolhedora. …"
+    },
+    {
+      "nome": "Ítalo S.",
+      "foto": "img/yakimono.webp",
+      "nota": 5,
+      "quando": "há um ano",
+      "texto": "Excelente experiência! O ambiente é agradável, o atendimento gentil e os pratos são frescos e muito bem preparados. Destaque para a qualidade dos pratos quentes e a apresentação impecável. Melhor rodízio que fui em Brasília. Recomendo sem dúvidas! …"
+    },
+    {
+      "nome": "Pedro Henrique S.",
+      "foto": "img/omakase.webp",
+      "nota": 5,
+      "quando": "há 8 meses",
+      "texto": "Gostei do atendimento e das opções. Escolhemos a sugestão do chefe ao invés de pedir pratos específicos. Foi uma boa pedida pois éramos surpreendidos por pratos que não teríamos conhecidos se pedíssemos de outra forma. …"
+    },
+    {
+      "nome": "Martha L.",
+      "foto": "img/sashimi.webp",
+      "nota": 5,
+      "quando": "9 meses atrás",
+      "texto": "Muito gostoso! Vale a pena o rodízio, muita variedade e pigmentos diferentes com muito sabor! O atendimento foi excelente! Devisson foi super gentil e fez restrições maravilhosas. Foram vários garçons trazendo os pratos e explicando cada um - todos educados e simpáticos. O cardápio é gigante, voltarei com certeza. …"
+    }
+  ] };
+  if (GOOGLE.link) document.getElementById("rev-link").href = GOOGLE.link;
+  if (GOOGLE.media) {
+    document.getElementById("rev-score").hidden = false;
+    document.getElementById("rev-avg").textContent = GOOGLE.media.toFixed(1).replace(".", ",");
+    // Estrelas arredondadas para a meia mais próxima (4,6 → 4 e meia), medidas pela largura real de cada estrela.
+    const meias = Math.round(GOOGLE.media * 2) / 2;
+    const revStars = document.getElementById("rev-stars");
+    revStars.appendChild(document.createElement("i"));
+    const pintar = () => {
+      const passo = revStars.offsetWidth / 5, ls = parseFloat(getComputedStyle(revStars).letterSpacing) || 0, cheias = Math.floor(meias);
+      revStars.querySelector("i").style.width = (passo * cheias + (passo - ls) * (meias - cheias)).toFixed(1) + "px";
+    };
+    pintar();
+    if (document.fonts) document.fonts.ready.then(pintar);
+    if (GOOGLE.total) document.getElementById("rev-total").textContent = GOOGLE.total;
+    else { const t = document.querySelector("#rev-score .rev-total [data-i18n]"); t.dataset.i18n = "hero.rev"; t.textContent = I18N["hero.rev"][lang]; }
+  }
+  // Depoimentos lado a lado: cada cartão com uma foto ligada ao que a pessoa elogiou, a inicial do nome, estrelas e o texto.
+  const revGrade = document.getElementById("rev-grade");
+  const gIcone = document.getElementById("rev-g").content;
+  const tons = ["#b4471a", "#7c2d12", "#9a5b2a", "#3f3a33"];
+  GOOGLE.avaliacoes.forEach((a, i) => {
+    const li = document.createElement("li"); li.className = "rev-cartao";
+    if (a.foto) {
+      const fig = document.createElement("figure"); fig.className = "rev-foto";
+      const img = document.createElement("img"); img.src = a.foto; img.alt = ""; img.loading = "lazy"; img.width = 800; img.height = 600;
+      fig.append(img); li.append(fig);
+    }
+    const corpo = document.createElement("div"); corpo.className = "rev-corpo";
+    const autor = document.createElement("div"); autor.className = "rev-autor";
+    const av = document.createElement("span"); av.className = "rev-avatar"; av.textContent = a.nome.charAt(0); av.style.background = tons[i % tons.length]; av.setAttribute("aria-hidden", "true");
+    const quem = document.createElement("div");
+    const nm = document.createElement("b"); nm.textContent = a.nome;
+    const wh = document.createElement("small"); wh.textContent = a.quando || "";
+    quem.append(nm, wh); autor.append(av, quem, gIcone.cloneNode(true));
+    const st = document.createElement("span"); st.className = "stars"; st.textContent = "★".repeat(a.nota); st.setAttribute("aria-label", a.nota + "/5");
+    const q = document.createElement("blockquote"); q.textContent = a.texto;
+    corpo.append(autor, st, q); li.append(corpo); revGrade.append(li);
+  });
+
+  // Guia de rolagem: o ensō do canto acompanha a página inteira e se completa quando ela chega ao fim.
+  const guia = document.getElementById("guia");
+  const guiar = () => {
+    const total = document.documentElement.scrollHeight - innerHeight;
+    const p = total > 0 ? clamp01(scrollY / total) : 1;
+    guia.style.setProperty("--p", (p > 0.97 ? 1 : p).toFixed(4));
+    guia.classList.toggle("on", scrollY > track.offsetHeight - innerHeight);
+    guia.classList.toggle("andou", p > 0.15);
+  };
+  addEventListener("scroll", guiar, { passive: true });
+  addEventListener("resize", guiar);
+  guiar();
+
+  const bar = document.querySelector(".bar");
+  addEventListener("scroll", () => bar.classList.toggle("solid", scrollY > track.parentElement.offsetTop + track.offsetHeight - innerHeight - 80), { passive: true });
+
+  // Cardápio completo (dados do cardápio digital da casa): abre na aba do item escolhido na seção.
+  const CARTA = [{"k":"entradas","r":"m1","jp":"前菜","s":[{"t":"Entradas especiais","i":[["Croquetas de Salmão com Maionese de Yuzu","5 croquetas de salmão com um pouco de cream cheese, suculentas por dentro e irresistivelmente crocantes por fora. Acompanha uma exclusiva maionese de limão japonês yuzu, que traz um toque cítrico e refrescante, elevando a experiência de sabor a um novo nível.","28","img/carta/f/croquetas-salmao-maionese-yuzu.webp",0],["Tigrado Samurai 2 unid.","Dois camarões envoltos em salmão, cream cheese e alho-poró, todos empanados em uma perfeita cobertura de tempura e panko. Finalizados com um toque de tare, gergelim e cebolinha.","28","img/carta/f/tigrado-samurai.webp",0],["Samurai Li · 4 unid.","4 camarões combinados com cream cheese, envoltos em salmão e finalizados com um molho cítrico especial com uma crocante palha de batata doce por cima.","38","img/carta/f/samurai-li.webp",0],["Samurai Ebi Spicy · Pipoquinha de Camarão","Pipoquinhas de camarão crocante, empanadas em uma massa de farinhas leves para uma textura perfeita. O prato é coberto com uma deliciosa maionese spicy, gergelim e um toque fresco de nirá picadinho.","56","img/carta/f/samurai-ebi-spicy.webp",0]]},{"t":"Entradas","i":[["Gohan","","13,80","img/carta/f/gohan.webp",0],["Misoshiro · Shiro Miso Origem Japão","Sopa de missô, tofu, wakame, kombu e cebolinha.","16","img/carta/f/misoshiro.webp",0],["Guioza Cogumelos · 2 unid.","","19","img/carta/f/guioza-cogumelos.webp",0],["Guioza Suíno · 2 unid.","Pastelzinho oriental com molho especial - 2 unidades.","17","img/carta/f/guioza-suino.webp",0],["Harumaki Primavera Legumes 2 unid.","Recheados e fritos em massa harumaki com molho agridoce da casa - 2 unidades.","16","img/carta/f/harumaki-legumes.webp",0],["Harumaki Carne e Legumes","Recheados e fritos em massa harumaki com molho agridoce da casa - 2 unidades.","18","img/carta/f/harumaki-carne-legumes.webp",0],["Mix Cogumelo 150 g","","28","img/carta/f/mix-cogumelo-150g.webp",0],["Shimeji Porção 150 g","Shimeji Branco salteado na manteiga da terra com nirá e finalizado com shoyu temperado com sake e dashi.","26","img/carta/f/shimeji-150g.webp",0],["Shimeji Na Chapa 300 g","","50","img/carta/f/shimeji-300g.webp",0],["Shiitake Meia Porção 150 g","","28","img/carta/f/shitake-150g.webp",0],["Shiitake Na Chapa 300 g","","55","img/carta/f/shitake-300g.webp",0],["Mix Cogumelos Na Chapa 300 g","","53","img/carta/f/mix-cogumelos-300g.webp",0],["Edamame Somente Flor de Sal","","35","img/carta/f/edamame-flor-de-sal.webp",0],["Edamame com Azeite Trufado e Flor de Sal","","45","img/carta/f/edamame-trufado-flor-de-sal.webp",0],["Sunomono sem Proteína","Conserva de pepino, cenoura, alga kombu e gergelim.","25","img/carta/f/sunomono-sem-proteina.webp",0],["Sunomono Kani","Conserva de pepino, cenoura, alga kombu e gergelim.","29","img/carta/f/sunomono-kani.webp",0],["Sunomono Salmão","Conserva de pepino, cenoura, alga kombu e gergelim.","42","img/carta/f/sunomono-salmao.webp",0],["Sunomono Samurai","Polvo, camarão e salmão.","48","img/carta/f/sunomono-samurai.webp",0],["Karaage","Descubra o sabor irresistível do nosso Karage Japonês, feito com suculentas coxas e sobrecoxas de frango marinadas em um ousado e delicioso mix de shoyu, sake, gengibre e alho. Cada pedaço é frito até ficar dourado e crocante, garantindo uma textura perfeita por fora e maciez por dentro. Acompanha um molho especial, que complementa e realça os sabores harmoniosos do prato.","33","img/carta/f/karaage.webp",0],["Tarta Atum","","","img/carta/f/tarta-atum.webp",0],["Nasu No Sumisso","Beringela japonesa com molho de missô.","26,80","img/carta/f/nasu-no-sumisso.webp",0]]},{"t":"Tempurá","i":[["De Legumes","Tempura de brócolis, couve-flor e cenoura (250g).","38","img/carta/f/tempura-legumes.webp",0],["De Lula","150g de anéis de lula, delicadamente empanados em uma massa tempura leve e crocante com molho para tempura.","45","img/carta/f/tempura-lula.webp",0],["De Camarão","8 suculentos camarões grandes, cuidadosamente preparados e servidos com nosso exclusivo molho especial.","58","img/carta/f/tempura-camarao.webp",0],["Mix","Legumes, camarão e lula com molho para tempura.","60","img/carta/f/tempura-mix.webp",0]]},{"t":"Usuzukuri · carpaccio de 10 cortes","i":[["Hajime","Corte fino de tilápia, delicadamente servido sobre chips de batata doce roxa e regado com leite de tigre. Acompanha cebola roxa, pimenta dedo-de-moça e coentro, e é finalizado com ovas tobiko.","38","img/carta/f/carpaccio-hajime.webp",0],["Oishi","Finas lâminas de salmão, cuidadosamente temperadas com azeite trufado e realçadas pela flor de sal Maldon. O toque final fica por conta do zest de limão siciliano.","52","img/carta/f/carpaccio-oishi.webp",0],["Tawa","","56"],["Maguro","Lâminas de atum fresco acompanhadas por um molho de missô temperado, que realça seu sabor natural. Finalizadas com cebolinha fresca e ovas tobiko.","58","img/carta/f/carpaccio-maguro.webp",0],["Umi Tako","Lâminas de polvo cuidadosamente marinadas em molho ponzu trufado. Finalizadas com ovas tobiko.","78","img/carta/f/carpaccio-umi-tako.webp",0]]},{"t":"Tataki","i":[["Tilápia","150 gramas de cubos de tilápia marinados em nosso molho cítrico especial, que realça a frescura do peixe. Finalizados com uma crocante palha de batata doce.","55","img/carta/f/tataki-tilapia.webp",0],["Salmão","150 gramas de cubos de salmão marinados em nosso molho cítrico especial, que realça a frescura do peixe. Finalizados com uma crocante palha de batata doce.","62","img/carta/f/tataki-salmao.webp",0],["Atum","150 gramas de cubos de atum marinados em nosso molho cítrico especial, que realça a frescura do peixe. Finalizados com uma crocante palha de batata doce.","65","img/carta/f/tataki-atum.webp",0],["Misto","150 gramas de salmão, atum, tilápia e polvo em cubos marinados em nosso molho cítrico especial, que realça a frescura do peixe. Finalizados com uma crocante palha de batata doce.","68","img/carta/f/tataki-misto.webp",0],["Polvo","150 gramas de polvo marinados em nosso molho cítrico especial, que realça a frescura do peixe. Finalizados com uma crocante palha de batata doce.","88","img/carta/f/tataki-polvo.webp",0]]},{"t":"Ceviche","i":[["Tilápia","","58","img/carta/f/ceviche-tilapia.webp",0],["Salmão","","68","img/carta/f/ceviche-salmao.webp",0],["Hamachi","150g de Hamachi japonês marinados no autêntico leite de tigre, acompanhados por milho peruano frito. Servido com crocantes chips de batata doce roxa.","98,20","img/carta/f/ceviche-hamachi.webp",0]]}]},{"k":"sashimis","r":"m2","jp":"刺身","s":[{"t":"Sashimi especial","i":[["Salmão Trufado, Flor de Sal e Zest de Limão Siciliano · 5 cortes","","42,50","img/carta/f/sashimi-salmao-trufado-flor-de-sal-e-zest-de-limao-siciliano-5-cortes.webp",0],["Salmão com Maracujá","Salmão maçaricado com calda de maracujá e sake - 5 cortes.","39,60","img/carta/f/sashimi-salmao-com-maracuja.webp",0],["Salmão com Gema de Codorna","Salmão maçaricado, gema de ovo de codorna levemente maçaricada, azeite trufado, flor de sal e ovas - 5 cortes.","39,60","img/carta/f/sashimi-salmao-com-gema-de-codorna.webp",0],["Vieiras Levemente Maçaricada","Vieiras levemente maçaricada com spray de limão taiti, azeite trufado, flor de sal Maldon e zest de limão siciliano - 6 unidades.","67,30","img/carta/f/sashimi-vieiras-levemente-macaricada.webp",0],["Salmão Ponzu","","67,30","img/carta/f/sashimi-salmao-ponzu.webp",0]]},{"t":"Sashimi","i":[["Tilápia","","27,70","img/carta/f/sashimi-tilapia.webp",0],["Salmão","","33,70","img/carta/f/sashimi-salmao.webp",0],["Atum","","37,60","img/carta/f/sashimi-atum.webp",0],["Polvo","","48,50","img/carta/f/sashimi-polvo.webp",0],["Vieiras","","49,50","img/carta/f/sashimi-vieiras.webp",0],["Camarão","","34,70","img/carta/f/sashimi-camarao.webp",0]]},{"t":"Combinados de sashimi","i":[["Ninja 9 cortes","3 Salmão, 3 Atum, 3 Tilápia.","59","img/carta/f/combinado-so-sashimi-ninja-9-c0rtes.webp",0],["Samurai 12 cortes","3 salmão trufado com flor de sal e zest de limão siciliano, 3 atum zuke, 3 camarões e 3 polvo.","87","img/carta/f/combinado-so-sashimi-samurai-12-cortes.webp",0],["Gueixa 15 cortes","3 barriga de salm0ão trufado com flor de sal e zest de limão siciliano, 3 salmão, 3 atum zuke, 3 camarões, 3 polvo.","124","img/carta/f/combinado-so-sashimi-gueixa-15-cortes.webp",0],["Imperador 18 cortes","3 barriga de salmão trufado com flor de sal e zest de limão siciliano, 3 salmão maçaricado com calda de maracujá, 3 atum,, 3 camarões, 3 polvo e 3 vieiras.","155","img/carta/f/combinado-so-sashimi-imperador-18-cortes.webp",0]]}]},{"k":"sushis","r":"c.sushi","jp":"握り","s":[{"t":"Nigiri especial · em dupla","i":[["Skin Cream Cheese e Limão","","14,90","img/carta/f/nigiri-skin-cream-cheese-e-limo-dupla.webp",0],["Tilápia com Hortelã Zest de Limão e Chips de Gengibre","","17,80","img/carta/f/nigiri-tilapia-com-hortel-zest-de-limo-e-chips-de-gengibre-dupla.webp",0],["Barriga de Salmão Flor de Sal e Zest de Limão Siciliano","","24,80","img/carta/f/nigiri-barriga-de-salmao-flor-de-sal-e-zest-de-limo-siciliano-dupla.webp",0],["Salmão Maçaricado com Alho Negro","","26,20","img/carta/f/nigiri-salmao-macaricado-com-alho-negro-dupla.webp",0],["Salmão Trufado e Ovas","","27,70","img/carta/f/nigiri-salmao-trufado-ovas.webp",0],["Atum Maçaricado com Tarê","","23,80","img/carta/f/nigiri-atum-macaricado-com-tare-dupla.webp",0],["Atum Trufado e Ovas","","27,70","img/carta/f/nigiri-atum-trufado-ovas.webp",0],["Camarão Cream Sweet Chili e Ovas","","25,70","img/carta/f/nigiri-camarao-cream-sweet-chili-e-ovas-dupla.webp",0],["Polvo com Shissô e Ovas","","35,60","img/carta/f/nigiri-polvo-shisso-ovas.webp",0],["Polvo Trufado e Ovas","","34,65","img/carta/f/nigiri-polvo-trufado-ovas.webp",0],["Vieira Levemente Maçaricada Limão Flor de Sal e Ovas","","45,50","img/carta/f/nigiri-vieira-levemente-maaricada-limo-flor-de-sal-e-ovas-dupla.webp",0]]},{"t":"Nigiri","i":[["Atum Foie Gras","","31,70","img/carta/f/nigiri-atum-foie-gras.webp",0],["Kani · dupla","","13,90","img/carta/f/nigiri-kani-dupla.webp",0],["Salmão Skin · dupla","","13,90","img/carta/f/nigiri-salmao-skin-dupla.webp",0],["Tilápia · dupla","","15,90","img/carta/f/nigiri-tilapia-dupla.webp",0],["Salmão · dupla","","19,80","img/carta/f/nigiri-salmao-dupla.webp",0],["Atum · dupla","","21,80","img/carta/f/nigiri-atum-dupla.webp",0],["Camarão · dupla","","21,80","img/carta/f/nigiri-camarao-dupla.webp",0],["Polvo · dupla","","31,70","img/carta/f/nigiri-polvo-dupla.webp",0],["Vieira Canadense · dupla","","41,60","img/carta/f/nigiri-vieira-canadense-dupla.webp",0],["Peixe do Dia","","","img/carta/f/nigiri-peixe-do-dia.webp",0]]},{"t":"Jyo · em dupla","i":[["Pepino com Cogumelos","","15,80","img/carta/f/jyo-pepino-cogumelos.webp",0],["Tilápia com Ceviche","","19,80","img/carta/f/jyo-tilapia-com-ceviche.webp",0],["Salmão com Tartar de Salmão, Cream, Cebolinha e Gergelim","","21,80","img/carta/f/jyo-salmao-com-tartar-de-salmao-cream-cebolinha-e-gergrlim.webp",0],["Salmão com Tartar Trufado com Ovas","","23,80","img/carta/f/jyo-salmao-tartar-trufado-ovas.webp",0],["Salmão com Gema de Codorna","","27,70","img/carta/f/jyo-salmao-com-gema-de-codorna.webp",0],["Salmão Ovas Massago","","27,70","img/carta/f/jyo-salmao-ovas-massago.webp",0],["Atum Spicy","","29,70","img/carta/f/jyo-atum-spicy.webp",0],["Atum, Lichia e Tarê","","31,70","img/carta/f/jyo-atum-lichia-e-tare.webp",0],["Atum Gema de Codorna e Ovas","","33,70","img/carta/f/jyo-atum-gema-codorna-ovas.webp",0],["Atum e Vieira Selada com Salsa Trufada e Ovas","","41,60","img/carta/f/jyo-atum-vieira-salsa-trufada-ovas.webp",0],["Polvo e Cogumelos","","43,60","img/carta/f/jyo-polvo-e-cogumelos.webp",0],["Salmão Maçaricado com Tarê e Alho-poró","","27,70","img/carta/f/jyo-salmao-macaricado-tare-alho-poro.webp",0],["Atum de Lichia e Foie Gras","","41,60","img/carta/f/jyo-atum-lichia-foie-gras.webp",0]]},{"t":"Gunkan","i":[["Ovas Massago","","21,80","img/carta/f/gunkan-ovas-massago.webp",0],["Ovas Tobiko","","27,70","img/carta/f/gunkan-ovas-tobiko.webp",0]]},{"t":"Uramaki especial Samurai","i":[["Ninja 5 unid.","","24,75","img/carta/f/uramaki-especial-samurai-ninja-5-und.webp",0],["Atum Spicy 5 unid.","","35,64","img/carta/f/uramaki-especial-atum-spicy-5un.webp",0],["Tropical 5 unid.","","21,80","img/carta/f/uramaki-especial-samurai-tropical-5-und.webp",0],["Salmão 10 unid.","","57,40","img/carta/f/uramaki-especial-samurai-salmao-10und.webp",0],["Salmão 5 unid.","","31,70","img/carta/f/uramaki-especial-samurai-salmao-5-unidades.webp",0],["Atum Spicy 10 unid.","","61,40","img/carta/f/uramaki-especial-samurai-atum-spicy-10und.webp",0],["Camarão 5 unid.","","31,70","img/carta/f/uramaki-especial-samurai-camarao-5-unidades.webp",0],["Tropical 10 unid.","","39,80","img/carta/f/uramaki-especial-samurai-tropical-10und.webp",0],["Ninja 10 unid.","","61,40","img/carta/f/uramaki-especial-samurai-ninja-10und.webp",0],["Camarão 10 unid.","","59,40","img/carta/f/uramaki-especial-samurai-camarao-10und.webp",0],["Gueixa 10 unid.","","61,40","img/carta/f/uramaki-especial-samurai-gueixa-10und.webp",0],["Gueixa 5 unid.","","33,70","img/carta/f/uramaki-especial-samurai-gueixa-5-und.webp",0]]},{"t":"Uramaki","i":[["Salmão","","33,70","img/carta/f/uramaki-salmao.webp",0],["Califórnia","Manga, pepino e kani.","26,40","img/carta/f/uramaki-california.webp",0],["Salmão Skin e Cream Cheese","Salmão Skin e cream cheese.","25,30","img/carta/f/uramaki-salmao-skin-e-cream-cheese.webp",0],["Atum","","33,70","img/carta/f/uramaki-atum.webp",0],["Camarão","","35,60","img/carta/f/uramaki-camarao.webp",0],["Filadélfia · Salmão Cream Cheese","Salmão e cream cheese.","33,70","img/carta/f/uramaki-filadelfia-salmao-cream-cheese.webp",0],["Salmão e Abacate","Salmão e cream cheese.","33,40","img/carta/f/uramaki-salmao-abacate.webp",0],["Atum e Cream Cheese","Salmão e cream cheese.","35,60","img/carta/f/uramaki-atum-cream-cheese.webp",0],["Atum e Abacate","Salmão e cream cheese.","35,60","img/carta/f/uramaki-atum-abacate.webp",0],["Camarão e Cream Cheese","Salmão e cream cheese.","37,60","img/carta/f/uramaki-camarao-e-cream-cheese.webp",0]]},{"t":"Hot roll","i":[["Hot Crisp 5 unid.","Hot especial feito na massa harumaki, recheado com salmão e cream cheese, sem arroz. Finalizado com couve crispy.","23","img/carta/f/hot-crisp-5un.webp",0],["Hot Crisp 10 unid.","Hot especial feito na massa harumaki, recheado com salmão e cream cheese, sem arroz. Finalizado com couve crispy.","45","img/carta/f/hot-crisp-10un.webp",0],["Hot Filadélfia","Hot roll com salmão finalizado com cream cheese, cebolinha, gergelim e tarê.","a partir de 22","img/carta/f/hot-filadelfia.webp",0],["Hot Camarão","Hot roll com camarão finalizado com cream cheese, cebolinha, gergelim e tarê.","a partir de 24","img/carta/f/hot-camarao.webp",0],["Hot Samurai","Hot roll com salmão, camarão, cream cheese e alho poro finalizado cebolinha, gergelim e tarê.","a partir de 26","img/carta/f/hot-samurai.webp",0]]},{"t":"Hosomaki","i":[["Pepino","Hosomaki enrolado com alga por fora.","17,80","img/carta/f/hosomaki-pepino.webp",0],["Kani","Hosomaki enrolado com alga por fora.","24,70","img/carta/f/hosomaki-kani.webp",0],["Shiitake","Hosomaki enrolado com alga por fora.","27,70","img/carta/f/hosomaki-shitake.webp",0],["Salmão","Hosomaki enrolado com alga por fora.","29,70","img/carta/f/hosomaki-salmao.webp",0],["Atum","Hosomaki enrolado com alga por fora.","32,70","img/carta/f/hosomaki-atum.webp",0],["Camarão","Hosomaki enrolado com alga por fora.","34,60","img/carta/f/hosomaki-camarao.webp",0]]},{"t":"Baterá","i":[["Arroz com Ovas Salmão Trufado com Chips Tempura","Arroz com ovas, salmão trufado com chips tempura.","41,60","img/carta/f/batera-ovas-salmao-trufado.webp",0],["Atum Spicy com Couve Crisp","Atum sipicy com couve crisp.","44,50","img/carta/f/batera-atum-spicy-com-couve-crisp.webp",0],["Atum","Uramaki enrolado com arroz por fora.","39,60","img/carta/f/batera-atum.webp",0]]},{"t":"Temaki especial","i":[["Salmão e Shimeji","","36,60","img/carta/f/temaki-especial-salmao-e-shimeji.webp",0],["Salmão Shiitake","","37,60","img/carta/f/temaki-especial-salmao-shitake.webp",0],["Salmão Trufado","Flor de sal e zest de limão siciliano e ovas massago.","38,60","img/carta/f/temaki-especial-salmao-trufado.webp",0],["Salmão Spicy Pimentas","","36,60","img/carta/f/temaki-especial-salmao-spicy-pimentas.webp",0],["Atum Spicy","Pimentas layu e sriracha.","39,60","img/carta/f/temaki-especial-atum-spicy.webp",0],["Samurai","Salmão, camarão, cream cheese e alho poró.","37,60","img/carta/f/temaki-especial-samurai.webp",0],["Vieiras","Vieiras, salsa trufada e ovas massago.","49,50","img/carta/f/temaki-especial-vieiras.webp",0]]},{"t":"Temaki","i":[["Califórnia","Manga, pepino e kani.","24,75","img/carta/f/temaki-california.webp",0],["Salmão Skin Gergelim e Cebolinha","","27,70","img/carta/f/temaki-salmao-skin-gergelim-e-cebolinha.webp",0],["Salmão Skin Cream Cheese, Gergelim e Cebolinha","","29,70","img/carta/f/temaki-salmao-skin-cream-chesse-gergelim-e-cebolinha.webp",0],["Atum, Cream Cheese, Gergelim e Cebolinha","","37,60","img/carta/f/temaki-atum-cream-cheese-gergelim-e-cebolinha.webp",0],["Salmão Gergelim e Cebolinha","","35,60","img/carta/f/temaki-salmao-gergelim-e-cebolinha.webp",0],["Camarão, Gergelim e Cebolinha","","37,60","img/carta/f/temaki-camarao-gergelim-e-cebolinha.webp",0],["Salmão Cream Cheese, Gergelim e Cebolinha","","33,70","img/carta/f/temaki-salmao-cream-cheese-gergelim-e-cebolinha.webp",0],["Camarão, Cream Cheese, Gergelim e Cebolinha","","34,20","img/carta/f/temaki-camarao-cream-cheese-gergelim-e-cebolinha.webp",0],["Atum, Gergelim e Cebolinha","","37,60","img/carta/f/temaki-atum-gergelim-e-cebolinha.webp",0],["Polvo Espanhol Gergelim e Cebolinha","","48,50","img/carta/f/temaki-polvo-espanhol-gergelim-e-cebolinha.webp",0]]}]},{"k":"combinados","r":"c.comb","jp":"盛合せ","s":[{"t":"Combinados especiais","i":[["Ninja (22 peças)","3 sashimi trufado, 3 sashimi atum, 3 sashimi tilapiá com limão e flor de sal, 1 nigiri salmão, 1 nigiri camarão especial e 1 uramaki ninja (10und).","148","img/carta/f/combinado-especiais-ninja-22-pecas.webp",0],["Samurai (38 peças)","5 sashimi polvo, 5 sashimi barriga salmão com salsa trufada e ovas, 5 sashimi vieiras trufadas com flor de sal, 2 nigiri vieiras levemente maçaricada com limão e flor de sal, 2 niguiri camarão especial e 5 uramaki samurai, camarão e 5 urumaki gueixa.","356","img/carta/f/combinados-especiais-samurai-38-pecas.webp",0]]},{"t":"Sushi e sashimi","i":[["Salmão (21 peças)","5 sashimi, 2 nigiri, 2 jyo, 4 hosomaki, 4 uramaki, 4 baterá.","112","img/carta/f/sushi-sashimi-salmao-21-pecas.webp",0],["Misto (22 peças)","3 sashimi salmão, 3 sashimi atum, 3 sashimi tilápia, 3 sashimi polvo, 2 nigiri salmão, 2 niguiri atum, 2 niguri camarão, 2 jyo atum spicy e 2 jyo salmão.","145","img/carta/f/sushi-sashimi-misto-22-pecas.webp",0],["Ninja (32 peças)","5 sashimi salmão trufado, 5 sashimi atum, 5 sashimi polvo, 2 nigiri salmão trufado, 2 nigiri camarão, 2 niguri skin especial, 8 uramaki filadélfia e 4 hosomaki salmão.","215","img/carta/f/sushi-e-sashimi-ninja-32-pecas.webp",0]]},{"t":"Combinados de sushi","i":[["Simples 16 peças","1 nigiri salmão, 1 nigiri skin, 1 nigiri tilápia, 1 nigiri kani, 4 uramaki fila, 8 uramaki califórnia.","67","img/carta/f/combinado-sushi-simples-16-pecas.webp",0],["Salmão 16 peças","2 nigiri, 3 jyo, 4 filadélfia, 4 hoso, 4 baterá.","82","img/carta/f/combinado-sushi-salmao-16-pecas.webp",0],["Atum 20 peças","4 nigiri, 8 uramaki com cream cheese, 4 hosomaki e 4 baterá.","102","img/carta/f/combinado-sushi-atum-20-pecas.webp",0],["Salmão Camarão 16 peças","2 nigigri salmão, 2 nigiri camarão, 4 urumaki filadélfia, 4 urumaki camarão, cream cheese 4 baterá.","93","img/carta/f/combinado-sushi-salmao-caramarao-16-pecas.webp",0]]},{"t":"Poke","i":[["Shimeji","Base de arroz ou salada, proteína, manga, abacate, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","62","img/carta/f/poke-shimeji.webp",0],["Shiitake","Base de arroz ou salada, proteína, manga, abacate, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","65","img/carta/f/poke-shitake.webp",0],["Shiitake e Shimeji","Base de arroz ou salada, proteína a sua escolha, manga, abacate, tomate cereja, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","63","img/carta/f/poke-shitake-e-shimeji.webp",0],["Tilápia","Base de arroz ou salada, proteína, manga, abacate, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","68","img/carta/f/poke-tilapia.webp",0],["Salmão","Base de arroz ou salada, proteína, manga, abacate, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","74","img/carta/f/poke-salmao.webp",0],["Atum","Base de arroz ou salada, proteína, manga, abacate, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","78","img/carta/f/poke-atum.webp",0],["Polvo","Base de arroz ou salada, proteína, manga, abacate, sunomono, cebola roxa, cream sweet chili, avelã, amêndoas , chips de batata doce roxa, alho poró frito, palha de batata doce e gergelim.","88","img/carta/f/poke-polvo.webp",0]]}]},{"k":"quentes","r":"m4","jp":"温物","s":[{"t":"Karê · curry japonês","i":[["Karê Frango","Karê japonês, com 150g de coxa e sobrecoxa de frango, cenoura, batata e cebola imersas em um rico e levemente picante molho de curry japonês, servido com arroz gohan e um toque de gengibre em conserva.","65","img/carta/f/kare-frango.webp",0],["Tonkatsu Karê","Karê japonês, lombo de porco empanado com molho tonkatsu por cima e cenoura, batata e cebola imersas em um rico e levemente picante molho de curry japonês, servido com arroz gohan e um toque de gengibre em conserva.","75","img/carta/f/tonkatsu-kare.webp",0]]},{"t":"Lámen","i":[["Lámen","Nosso Lamen é preparado com um rico caldo de porco e galinha, que fica cozinhando cuidadosamente por 48 horas seguidas para extrair o máximo de sabor. Escolha entre a suculenta chashu (barriga de porco cozida lentamente) ou nosso karaage de proteínas. O prato vem acompanhado de um ovo marinado com gema gelatinosa em shoyu e temperado, broto de feijão, acelga chinesa, cebolinha, gengibre em conserva e nori. Para os amantes de um toque picante, não deixe de pedir nosso exclusivo chili oil!.","68","img/carta/f/lamen.webp",0]]},{"t":"Teppanyaki","i":[["Misto (Carne e Frango)","","70","img/carta/f/teppanyaky-misto-carne-e-frango.webp",0],["Coxa e Sobrecoxa de Frango","","68","img/carta/f/teppanyaki-coxa-e-sobrecoxa-de-frango.webp",0],["Shiitake","","68","img/carta/f/teppanyaki-shitake.webp",0],["Mix de Cogumelos","","65","img/carta/f/teppanyaki-mix-de-cogumelos.webp",0],["Shimeji","","62","img/carta/f/teppanyaki-shimeji.webp",0],["Filé Suíno","","68","img/carta/f/teppanyaki-file-suino.webp",0],["Angus","","72","img/carta/f/teppanyaki-angus.webp",0],["Misto (Frango, Filé e Camarão)","","79","img/carta/f/teppanyaki-misto-frango-file-e-camarao.webp",0],["Tilápia","","72","img/carta/f/teppanyaki-tilapia.webp",0],["Lula","","75","img/carta/f/teppanyaki-lula.webp",0],["Camarão","","82","img/carta/f/teppanyaki-camarao.webp",0],["Salmão","","89","img/carta/f/teppanyaki-salmao.webp",0]]},{"t":"Yakisoba","i":[["Legumes","","60","img/carta/f/yakisoba-legumes.webp",0],["Shimeji","","68","img/carta/f/yakisoba-shimeji.webp",0],["Misto (Carne e Frango)","","73","img/carta/f/yakisoba-misto-carne-e-frango.webp",0],["Shiitake","","72","img/carta/f/yakisoba-shitake.webp",0],["Mix Cogumelos","","70","img/carta/f/yakisoba-mix-cogumelos.webp",0],["Coxa e Sobre Coxa de Frango","","70","img/carta/f/yakisoba-coxa-e-sobre-coxa-de-frango.webp",0],["Filé Suíno","","72","img/carta/f/yakisoba-file-suino.webp",0],["Angus","","75","img/carta/f/yakisoba-angus.webp",0],["Lula","","80","img/carta/f/yakisoba-lula.webp",0],["Camarão","","82","img/carta/f/yakisoba-camarao.webp",0],["Polvo","","89","img/carta/f/yakisoba-polvo.webp",0],["Frutos do Mar","","85","img/carta/f/yakisoba-frutos-do-mar.webp",0]]}]},{"k":"sobremesas","r":"m6","jp":"甘味","s":[{"t":"Sobremesas","i":[["Pudim de Yuzu","","21,80","img/carta/f/pudin-de-yuzu.webp",0],["Harumaki Romeu e Julieta","","18,20","img/carta/f/harumaki-romeu-e-julieta.webp",0],["Brownie","Receita da casa com mix de castanhas, acompanha sorvete de creme.","24,75","img/carta/f/brownie.webp",0],["Petit Gateau","Receita da casa, acompanha sorvete de creme.","26","img/carta/f/petit-gateau.webp",0],["Harumaki Doce de Leite","","18,20","img/carta/f/harumaki-doce-de-leite.webp",0]]}]},{"k":"bebidas","r":"c.beb","jp":"日本酒","s":[{"t":"Coquetelaria premium japonesa","i":[["Chita Haiboru","Whisky Japonês Chita, mel com flor de laranjeira, yuzu, ginger ale, flor de sal e furikake.","68","img/carta/f/chita-haiboru.webp",0],["Lágrimas do Imperador","Vodka japonesa Haku, vermute, lichia e flor de sal.","40","img/carta/f/lagrimas-do-imperador.webp",0],["Roku Negroni","Gin Japonês Roku, campari com infusão de chá verde e toranja, vermute e bitter de wasabi com absinto.","58","img/carta/f/roku-negroni.webp",0],["Samurai Tônica","Gin Japonês Roku, yuzu, limão siciliano e elderflower.","42"]]},{"t":"Drinks autorais","i":[["Akira Mule","Gin, abacaxi com pimenta sriracha e monster pacific e espuma de gengibre e canela ralada.","38","img/carta/f/drinks-akira-mule.webp",0],["Harumi Haiboru","Bourbon, mel com flor de laranjeira e ginger ale.","40","img/carta/f/drinks-harumi-haiboru.webp",0],["Kenzo Negroni","Sake, vermute e campari.","40","img/carta/f/drinks-kenzo-negroni.webp",0],["Mayumi Daiquiri","Rum Havana, morango com tarê e yuzu.","38","img/carta/f/drinks-mayumi-daiquiri.webp",0]]},{"t":"Saquê","i":[["Nihonsakari Nigiwi · 1800 ml","","298","img/carta/f/nihonsakari-nigiwi-1800ml.webp",0],["Nihonsakari Nigiwi · 100 ml","","38","img/carta/f/nihonsakari-nigiwi-100ml.webp",0],["Takashimizu Seisen Karakuchi · 1800 ml","","420","img/carta/f/takashimizu-seisen-karakuchi-1800ml.webp",0],["Takashimizu Seisen Karakuchi · 100 ml","","38"],["Kikumasamune Karakuchi · 100 ml","","38"],["Josen · Sawanotsuru · 100 ml","","38"],["Chiebijin Jinmai · 1800 ml","","220","img/carta/f/chiebijin-jinmai-1800ml.webp",0],["Josen · Sawanotsuru · 1800 ml","","265","img/carta/v/josen-sawanotsuru-1800ml.webp",1],["Sake Azuma Dourado Garrafa","","95","img/carta/f/sake-azuma-dourado-garrafa.webp",0],["Hakutsuru Josen · 1800 ml","","398"],["Chokaisan Seicho Karakuchi · 100 ml","","45"],["Chokaisan Seicho Karakuchi · 720 ml","","255","img/carta/f/chokaisan-seicho-karakuchi-720ml.webp",0],["Sake Nacional · Azuma Dourado · 100 ml","","29","img/carta/f/azuma-dourado-100ml.webp",0],["Sake Kikomasamune","","32"],["Hakutsuru Junmai · 100 ml","","38"]]},{"t":"Drinks","i":[["Aperol Spritz","","33","img/carta/f/aperol-spritz.webp",0],["Caipiroska de Limão","","31","img/carta/f/caipiroska-de-limao.webp",0],["Caipiroska de Limão Siciliano","","31","img/carta/f/caipiroska-de-limao-siciliano.webp",0],["Caipiroska de Morango","","35","img/carta/f/caipiroska-de-morango.webp",0],["Sakeroska de Limão","","33","img/carta/f/sakeroska-de-limao.webp",0],["Sakeroska de Limão Siciliano","","33","img/carta/f/sakeroska-de-limao-siciliano.webp",0],["Sakeroska de Morango","","37","img/carta/f/sakeroska-de-morango.webp",0],["Sakeroska de Lichia com Mel","","40","img/carta/f/sakeroska-de-lichia-com-mel.webp",0],["Gin Tônica Clássica","","33","img/carta/f/gin-tonica-classica.webp",0],["Gin Tônica Morango com Tarê e Espuma de Gengibre","","38","img/carta/f/gin-tonica-morango-com-tare-e-espuma-de-gengibre.webp",0],["Manhattan · Bourbon Vermute e Angostura","","37","img/carta/f/manhatan-bourbon-vermute-e-angustura.webp",0],["Moscow Mule","","31","img/carta/f/moscow-mule.webp",0],["Negroni Tradicional","","58","img/carta/f/negroni-tradicional.webp",0],["Caipiroska de Lichia","","35","img/carta/f/caipiroska-de-lichia.webp",0],["Caipirinha Limão","","25","img/carta/f/caipirinha-limao.webp",0],["Caipirinha Morango","","27","img/carta/f/caipirinha-morango.webp",0],["Caipiroska Yuzu Importada","","33","img/carta/f/caipiroska-yuzu-importada.webp",0],["Sakeroska Morango com Lichia","","40","img/carta/f/sakeroska-morango-com-lichia.webp",0],["Dry Martini","","35","img/carta/f/dry-martini.webp",0],["Caipirinha Lichia","","27","img/carta/f/caipirinha-lichia.webp",0],["Sakeroska de Seriguela","","35","img/carta/f/sakeroska-de-seriguela.webp",0]]},{"t":"Vinhos e espumantes","i":[["Vasco Viejo · Branco 375 ml","","52","img/carta/f/vasco-viejo-branco-375ml.webp",0],["Malacara Malbec","","150","img/carta/f/malacara-malbec.webp",0],["Amphora Merlot","","175"],["Espumante 1913 Sparkling Brut · Brasil","","95","img/carta/f/espumante-1913-sparkling-brut.webp",0],["Aleixo Garcia Branco Garrafa 750 ml","","95","img/carta/f/aleixo-garcia-branco-garrafa-750ml.webp",0],["Casal da Seara Vinho Verde · Portugal","","115","img/carta/f/vinho-verde-casal-da-seara-portugal.webp",0],["4 Estaciones Chardonnay · Argentina","","115","img/carta/f/4-estaciones-chardonnay.webp",0],["Casas Del Bosque Gran Reserva","","188","img/carta/f/casas-del-bosque-gran-reserva.webp",0],["Casas del Bosque Cabernet Sauvignon","","135","img/carta/f/casas-del-bosque-carbenet-sauvignon.webp",0],["Espumante 1913 Brut Rose · Brasil","","98","img/carta/f/espumante-1913-brut-rose.webp",0],["Gran Maestre Sauvignon Blanc","","125","img/carta/f/gran-maestre-sauvignon-blanc.webp",0],["Espumante Casa Perini Brut 750 Ml","","145"],["Casas del Bosque Reserva Chardonnay · Chile","","135"],["Casas del Bosque Reserva Sauvignon Blanc · Chile","","135"],["Emiliana Adobe Reserva Riesling · Chile","","150","img/carta/f/vinho-chile-emil-adobe-res-riesling-750ml.webp",0],["Pavillon La Tourelle Bordeaux Supérieur · França","","120","img/carta/f/vinho-tinto-pavillon-la-tourelle-bordeaux-seperieur-franca.webp",0],["Monte do Carrapatelo Branco · Portugal","","165","img/carta/f/vinho-port-monte-do-carrapatelo-bco-750ml.webp",0],["Casa Perini Solidario Rose 750 ml","","145","img/carta/f/vinho-casa-perini-solidario-rose-750ml.webp",0],["Branco · Paskua Sauvignon Blanc · Chile","","115"],["Aleixo Garcia · Meia Garrafa Branco","","115"],["Intimista","","115","img/carta/f/vinho-intimista.webp",0],["Materia Regional Alentejano","","124,90","img/carta/f/vinho-materia-regional-alentejano.webp",0],["18 Gran Reserva Cabernet Sauvignon","","147","img/carta/f/vinho-tinto-18-gran-reserva-cabernet-sauvignon.webp",0],["Piteira Signature Tinto","","175","img/carta/f/vinho-piteira-signature-tinto.webp",0],["Alma Jovem Tannat Merlot · Uruguai","","115","img/carta/f/vinho-alma-jovem-tannat-merlot-uruguai.webp",0],["Pardalito","","135","img/carta/f/pardalito.webp",0],["Arcos do Vento","","132"],["Ventisquero Rose Reserva","","119","img/carta/f/ventisquero-rose-reserva.webp",0],["4 Estaciones Malbec Rose","","90","img/carta/f/4-estaciones-malbec-rose.webp",0],["Monteiro Torres","garrafa 750ml.","115","img/carta/f/monteiro-torres.webp",0],["Emiliana Adobe Reserva Gewürztraminer · Chile","garrafa 750ml.","150","img/carta/f/vinho-chil-emil-adobe-res-gewurz.webp",0],["Emiliana Adobe Reserva Chardonnay · Chile","garrafa 750ml.","150","img/carta/f/adobe-chardonnay.webp",0],["4 Estaciones Malbec","garrafa 750ml.","90","img/carta/f/4-estaciones-malbec.webp",0],["Viu Manent Reserva Chardonnay · Chile","garrafa 750ml.","117","img/carta/v/vinho-chil-viu-manent-res-chardon.webp",1],["Flor de Penalva · Portugal","garrafa 750ml.","117","img/carta/v/vinho-portugues-flor-d-penalva.webp",1],["Casal Mendes Verde Branco · Portugal","garrafa 750ml.","115","img/carta/v/vinho-port-casal-mendes-verde-branco.webp",1],["Punti Ferrer Cabernet Sauvignon · Chile","garrafa 750ml.","137","img/carta/v/chile-punti-ferrer-cabernet-sauvignon.webp",1],["Ravanal Gran Reserva Cabernet Sauvignon · Chile","","147"],["Paskua Rosé · Chile · meia garrafa","","57"],["Freixenet Cava Gran Selección · Espanha","","125"],["Pknt Reserva Carmenère · Chile","","119","img/carta/f/pknt-reserva-carmenere.webp",0],["Cordero con Piel de Lobo Malbec · Argentina","","115"],["Casillero del Diablo Devil's Collection Sauvignon Blanc · Chile","","115","img/carta/v/chile-branco-casillero-del-diablo-ed-especial-devil-s-sauvig.webp",1],["Ventisquero Chardonnay · Chile","","115"]]},{"t":"Prius · cerveja artesanal com levedura de arroz","i":[["Prius Sour","","48","img/carta/f/cerveja-prius-sour.webp",0],["Prius Brut Ipa","","48","img/carta/f/cerveja-prius-brut-ipa.webp",0]]},{"t":"Whisky · dose","i":[["Red Label 12 Anos","","28"],["Jack Daniel's","","28","img/carta/f/jack-daniels.webp",0],["Red Label 8 Anos","","22","img/carta/f/red-label-8-anos.webp",0],["Old Parr 12 Anos","","30","img/carta/f/old-parr-12-anos.webp",0],["Dewar's 15 Anos","","45","img/carta/f/dewers-15-anos.webp",0],["Chita","","65","img/carta/f/chita.webp",0],["Whisky Hibiki","","82","img/carta/f/whisky-hibiki.webp",0]]},{"t":"Vodka · dose","i":[["Smirnoff","","15","img/carta/f/smirnoff-dose.webp",0],["Haku Vodka","","28","img/carta/f/haku-vodka-dose.webp",0]]},{"t":"Cachaça","i":[["Da Nora","","14,90"],["Almendra Ioio","","16","img/carta/f/almendra-ioio-dose.webp",0],["Almendra Teja","","35","img/carta/f/almendra-teja-dose.webp",0],["Weber Haus 7 Madeiras","","22","img/carta/v/weber-haus-7-madeiras-dose.webp",1]]},{"t":"Sodas da casa","i":[["Limão Siciliano","","19","img/carta/f/soda-limao-siciliano.webp",0],["Maçã Verde","","20","img/carta/f/soda-de-maca-verde.webp",0],["Morango","","23","img/carta/f/soda-de-morango.webp",0],["Gengibre","","19","img/carta/f/soda-de-gengibre.webp",0],["Lichia","","23","img/carta/f/soda-de-lichia.webp",0],["Frutas Vermelhas","","23","img/carta/f/soda-frutas-vermelhas.webp",0],["Guaraná e Yuzu","","14,50","img/carta/f/soda-de-guarana-e-yuzu.webp",0]]},{"t":"Sucos","i":[["Limão","","14","img/carta/f/suco-de-limao.webp",0],["Limão Siciliano","","15","img/carta/f/suco-de-limao-siciliano.webp",0],["Abacaxi com Hortelã","","15","img/carta/f/suco-de-abacaxi-com-hortela.webp",0],["Maracujá","","15","img/carta/f/suco-de-maracuja.webp",0],["Laranja","suco natural ou gelo e açúcar.","15","img/carta/f/suco-de-laranja.webp",0],["Morango","","18","img/carta/f/suco-de-morango.webp",0]]},{"t":"Cervejas, licores, cafés e refrigerantes","i":[["Nespresso · Leggero","","7","img/carta/f/nespresso-leggero.webp",0],["Café Expresso","","9","img/carta/f/cafe-expresso.webp",0],["H2O Limoneto","","12,50","img/carta/f/h20-limoneto.webp",0],["Licor de Ameixa Japonesa","","32","img/carta/f/licor-de-ameixa-japonesa.webp",0],["Coca Cola Lata","","9,80","img/carta/f/coca-cola-lata.webp",0],["Coca Cola Ks","","9,80","img/carta/f/coca-cola-ks.webp",0],["Coca Cola Lata Zero","","9,80","img/carta/f/coca-cola-lata-zero.webp",0],["Coca Cola Ks Zero","","9,80","img/carta/f/coca-cola-ks-zero.webp",0],["Guaraná","","9,80","img/carta/f/guarana.webp",0],["Licor 43","","22,90","img/carta/f/licor-43.webp",0],["Heineken Zero","","14,50","img/carta/f/heineken-zero.webp",0],["Yamazaki Whisky","","145,90","img/carta/f/yamazaki-whisky.webp",0],["Dose Salinas","","13,90","img/carta/f/dose-salinas.webp",0],["Campari Dose","","22","img/carta/f/campari-dose.webp",0],["Stella Artois sem Glúten","","16","img/carta/f/stella-artois-sem-gluten.webp",0],["Heineken","","15,50","img/carta/f/heineken.webp",0],["Corona","","16","img/carta/f/corona.webp",0],["Cozumel","","19,50","img/carta/f/cozumel.webp",0],["Stella Long Neck","","15,50","img/carta/f/stella-long-neck.webp",0],["Red Bull Tradicional","","15","img/carta/f/red-bull-tradicional.webp",0],["Prius · Jaspion","","18,90","img/carta/f/prius-jaspion.webp",0],["H2O Tradicional","","12,50","img/carta/f/h2o-tradicional.webp",0],["Fanta Laranja","","9,80","img/carta/f/fanta-laranja.webp",0],["Guaraná Zero","","9,80","img/carta/f/guarana-zero.webp",0],["Água sem Gás","","8,90","img/carta/f/agua-sem-gas.webp",0],["Água com Gás","","8,90","img/carta/f/agua-com-gas.webp",0],["Água Tônica","","9,80","img/carta/f/agua-tonica.webp",0],["Água Tônica Zero","","9,80"],["Schweppes Citrus","","9,80","img/carta/f/schweppes-citrus.webp",0],["Sprite","","9,80","img/carta/f/sprite.webp",0],["Shot de Limão","","2,50","img/carta/f/shot-de-limao.webp",0],["Nespresso · Ristretto","","6,50","img/carta/f/nespresso-ristretto.webp",0]]}]}];
+  let cartaAba = "entradas", cartaVolta = null;
+  function renderCarta(alvo) {
+    const caixa = document.getElementById("carta");
+    if (!caixa || caixa.hidden) return;
+    const abas = document.getElementById("carta-abas"), corpo = document.getElementById("carta-corpo");
+    abas.replaceChildren(...CARTA.map((a) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.setAttribute("role", "tab"); b.textContent = I18N[a.r][lang];
+      b.setAttribute("aria-selected", String(a.k === cartaAba));
+      b.addEventListener("click", () => { cartaAba = a.k; corpo.scrollTop = 0; renderCarta(); abas.querySelector('[aria-selected="true"]').focus({ preventScroll: true }); });
+      return b;
+    }));
+    const aba = CARTA.find((a) => a.k === cartaAba);
+    const cab = document.createElement("div"), h2 = document.createElement("h2"), jp = document.createElement("span"), capa = document.createElement("img");
+    cab.className = "carta-cab"; h2.textContent = I18N[aba.r][lang]; jp.className = "jp"; jp.lang = "ja"; jp.textContent = aba.jp;
+    capa.src = `img/carta/carta-${aba.k}.webp`; capa.alt = ""; capa.width = 1800; capa.height = 764; capa.decoding = "async";
+    cab.append(capa, h2, jp);
+    const secs = aba.s.map((sec) => {
+      const div = document.createElement("section"), h3 = document.createElement("h3"), ul = document.createElement("ul");
+      div.className = "carta-sec"; div.dataset.t = sec.t; h3.textContent = sec.t; ul.className = "carta-itens";
+      // Cada item: nome, descrição, preço e, quando houver, a foto (1 = foto de produto em fundo branco, mostrada inteira).
+      // Nas bebidas, se a seção tem fotos, os itens sem foto ganham o mesmo recuo, para todos os nomes ficarem na mesma coluna.
+      const alinhar = aba.k === "bebidas" && sec.i.some((x) => x[3]);
+      ul.append(...sec.i.map(([nome, desc, preco, foto, produto]) => {
+        const li = document.createElement("li"), linha = document.createElement("div"), b = document.createElement("b"), v = document.createElement("span");
+        linha.className = "carta-linha"; b.textContent = nome; v.textContent = preco; linha.append(b, v);
+        const texto = document.createElement("div"); texto.append(linha);
+        if (desc) { const p = document.createElement("p"); p.textContent = desc; texto.append(p); }
+        if (foto) {
+          const img = document.createElement("img");
+          img.src = foto;
+          img.alt = ""; img.width = 480; img.height = 480; img.loading = "lazy"; img.decoding = "async";
+          if (produto) img.className = "produto";
+          const ampliar = document.createElement("button");
+          ampliar.type = "button"; ampliar.className = "foto-btn"; ampliar.setAttribute("aria-label", nome); ampliar.append(img);
+          ampliar.addEventListener("click", () => abrirFoto(foto, !!produto, nome, desc, preco, ampliar));
+          li.className = "com-foto"; li.append(ampliar);
+        }
+        if (!foto && alinhar) { const vazio = document.createElement("span"); vazio.className = "foto-vazia"; li.className = "com-foto"; li.append(vazio); }
+        li.append(texto);
+        return li;
+      }));
+      div.append(h3, ul);
+      return div;
+    });
+    const nota = document.createElement("p");
+    nota.className = "carta-nota";
+    nota.textContent = I18N["c.nota"][lang] + (cartaAba === "bebidas" ? " · " + I18N["c.alcool"][lang] : "");
+    corpo.replaceChildren(cab, ...secs, nota);
+    const sec = alvo && secs.find((x) => x.dataset.t === alvo);
+    if (sec) corpo.scrollTop = sec.offsetTop - corpo.offsetTop - 24;
+  }
+  function abrirCarta(aba, alvo, origem) {
+    cartaAba = aba; cartaVolta = origem;
+    document.getElementById("carta").hidden = false; document.body.style.overflow = "hidden";
+    document.getElementById("carta-corpo").scrollTop = 0;
+    renderCarta(alvo);
+    document.querySelector('#carta-abas [aria-selected="true"]').focus({ preventScroll: true });
+  }
+  function fecharCarta() {
+    document.getElementById("carta").hidden = true; document.body.style.overflow = "";
+    if (cartaVolta) cartaVolta.focus({ preventScroll: true });
+  }
+  document.querySelectorAll("[data-carta]").forEach((el) => el.addEventListener("click", (e) => { e.preventDefault(); abrirCarta(el.dataset.carta, el.dataset.alvo, el); }));
+  document.getElementById("carta-fechar").addEventListener("click", fecharCarta);
+  addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!document.getElementById("foto-zoom").hidden) fecharFoto();
+    else if (!document.getElementById("carta").hidden) fecharCarta();
+  });
+
+  // Foto ampliada: tocar na miniatura abre a foto grande com o nome, a descrição e o preço; qualquer toque fecha.
+  let fotoVolta = null;
+  function abrirFoto(src, produto, nome, desc, preco, origem) {
+    const z = document.getElementById("foto-zoom"), img = z.querySelector("img");
+    img.src = src; img.alt = nome; img.classList.toggle("produto", produto);
+    z.querySelector("b").textContent = nome; z.querySelector(".fz-preco").textContent = preco; z.querySelector("p").textContent = desc || "";
+    fotoVolta = origem; z.hidden = false; requestAnimationFrame(() => z.classList.add("on"));
+    z.querySelector(".close").focus({ preventScroll: true });
+  }
+  function fecharFoto() {
+    const z = document.getElementById("foto-zoom");
+    z.classList.remove("on"); z.hidden = true;
+    if (fotoVolta) fotoVolta.focus({ preventScroll: true });
+  }
+  document.getElementById("foto-zoom").addEventListener("click", fecharFoto);
+
+  const overlay = document.getElementById("overlay");
+  const openBtn = document.getElementById("menu-open");
+  const setMenu = (open) => { overlay.hidden = !open; openBtn.setAttribute("aria-expanded", String(open)); document.body.style.overflow = open ? "hidden" : ""; if (open) overlay.querySelector("a").focus(); };
+  openBtn.addEventListener("click", () => setMenu(true));
+  document.getElementById("menu-close").addEventListener("click", () => { setMenu(false); openBtn.focus(); });
+  overlay.addEventListener("click", (e) => { if (e.target.tagName === "A") setMenu(false); });
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && !overlay.hidden) { setMenu(false); openBtn.focus(); } });
+
+  addEventListener("resize", resize);
+  resize();
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body></html>
