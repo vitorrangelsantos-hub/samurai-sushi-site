@@ -1,0 +1,222 @@
+{
+  "categorias": [
+    {
+      "nome": "Entradas",
+      "icone": "🥢",
+      "itens": [
+        {
+          "nome": "Edamame",
+          "descricao": "Vagem de soja cozida no vapor com sal marinho",
+          "preco": 18.00
+        },
+        {
+          "nome": "Gyoza",
+          "descricao": "5 unidades de pastel japonês recheado com carne suína",
+          "preco": 32.00
+        },
+        {
+          "nome": "Sunomono",
+          "descricao": "Salada de pepino japonês com molho agridoce",
+          "preco": 24.00
+        },
+        {
+          "nome": "Shimeji na Manteiga",
+          "descricao": "Cogumelos shimeji salteados na manteiga com shoyu",
+          "preco": 38.00
+        }
+      ]
+    },
+    {
+      "nome": "Sashimis",
+      "icone": "🐟",
+      "itens": [
+        {
+          "nome": "Sashimi de Salmão",
+          "descricao": "8 fatias de salmão fresco premium",
+          "preco": 52.00
+        },
+        {
+          "nome": "Sashimi de Atum",
+          "descricao": "8 fatias de atum vermelho selecionado",
+          "preco": 68.00
+        },
+        {
+          "nome": "Sashimi Misto",
+          "descricao": "12 fatias variadas: salmão, atum e peixe branco",
+          "preco": 78.00
+        },
+        {
+          "nome": "Carpaccio de Polvo",
+          "descricao": "Finas fatias de polvo com azeite trufado",
+          "preco": 72.00
+        }
+      ]
+    },
+    {
+      "nome": "Niguiris",
+      "icone": "🍣",
+      "itens": [
+        {
+          "nome": "Niguiri Salmão",
+          "descricao": "2 unidades de bolinho de arroz com salmão",
+          "preco": 22.00
+        },
+        {
+          "nome": "Niguiri Atum",
+          "descricao": "2 unidades de bolinho de arroz com atum",
+          "preco": 28.00
+        },
+        {
+          "nome": "Niguiri Camarão",
+          "descricao": "2 unidades de bolinho de arroz com camarão",
+          "preco": 26.00
+        },
+        {
+          "nome": "Niguiri Salmão Maçaricado",
+          "descricao": "2 unidades flambadas com molho especial",
+          "preco": 28.00
+        }
+      ]
+    },
+    {
+      "nome": "Uramakis",
+      "icone": "🌀",
+      "itens": [
+        {
+          "nome": "Filadélfia Roll",
+          "descricao": "8 peças com salmão, cream cheese e cebolinha",
+          "preco": 42.00
+        },
+        {
+          "nome": "Dragon Roll",
+          "descricao": "8 peças com camarão empanado, abacate e molho teriyaki",
+          "preco": 58.00
+        },
+        {
+          "nome": "Samurai Special",
+          "descricao": "10 peças com salmão, atum, manga e molho da casa",
+          "preco": 68.00
+        },
+        {
+          "nome": "Vulcão Roll",
+          "descricao": "8 peças gratinadas com cream cheese e salmão",
+          "preco": 54.00
+        }
+      ]
+    },
+    {
+      "nome": "Hot Rolls",
+      "icone": "🔥",
+      "itens": [
+        {
+          "nome": "Hot Filadélfia",
+          "descricao": "8 peças empanadas com salmão e cream cheese",
+          "preco": 38.00
+        },
+        {
+          "nome": "Hot Skin",
+          "descricao": "8 peças com pele de salmão crocante",
+          "preco": 36.00
+        },
+        {
+          "nome": "Hot Camarão",
+          "descricao": "8 peças empanadas com camarão e cream cheese",
+          "preco": 44.00
+        }
+      ]
+    },
+    {
+      "nome": "Combinados",
+      "icone": "🍱",
+      "itens": [
+        {
+          "nome": "Combo Individual",
+          "descricao": "15 peças: 5 sashimis, 4 niguiris e 6 uramakis",
+          "preco": 75.00
+        },
+        {
+          "nome": "Combo Casal",
+          "descricao": "30 peças variadas para duas pessoas",
+          "preco": 140.00
+        },
+        {
+          "nome": "Combo Samurai",
+          "descricao": "50 peças premium com sashimis especiais",
+          "preco": 220.00
+        },
+        {
+          "nome": "Combo Festa",
+          "descricao": "100 peças variadas para grupos",
+          "preco": 420.00
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "icone": "🍵",
+      "itens": [
+        {
+          "nome": "Chá Verde",
+          "descricao": "Chá verde japonês tradicional",
+          "preco": 12.00
+        },
+        {
+          "nome": "Saquê",
+          "descricao": "Dose de saquê premium",
+          "preco": 28.00
+        },
+        {
+          "nome": "Cerveja Asahi",
+          "descricao": "Long neck 355ml",
+          "preco": 22.00
+        },
+        {
+          "nome": "Refrigerante",
+          "descricao": "Lata 350ml",
+          "preco": 8.00
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "icone": "🍡",
+      "itens": [
+        {
+          "nome": "Mochi Ice",
+          "descricao": "3 unidades de bolinho de arroz com sorvete",
+          "preco": 28.00
+        },
+        {
+          "nome": "Tempurá de Banana",
+          "descricao": "Com calda de chocolate e sorvete",
+          "preco": 32.00
+        },
+        {
+          "nome": "Harumaki de Nutella",
+          "descricao": "Rolinho primavera doce com Nutella",
+          "preco": 26.00
+        }
+      ]
+    }
+  ],
+  "restaurante": {
+    "nome": "Samurai Sushi",
+    "slogan": "A arte milenar do sushi em cada peça",
+    "endereco": "St. Sudoeste CLSW 300 B, Edifício Morro de São Paulo, Loja 22, Brasília - DF",
+    "cep": "70673-073",
+    "telefone": "(61) 99987-2266",
+    "horario": {
+      "segunda": "17:00 - 23:00",
+      "terca_sexta": "12:00 - 15:00, 17:00 - 23:00",
+      "sabado": "12:00 - 23:00",
+      "domingo": "12:00 - 22:45"
+    },
+    "whatsapp": "5561999872266",
+    "avaliacao": {
+      "google": 4.6,
+      "avaliacoes": 740
+    },
+    "preco_medio": "R$ 54 - R$ 130",
+    "caracteristicas": ["Entrega", "Lugares ao ar livre", "Leve embora", "Reserva", "Acessível a cadeiras de rodas", "Cartões de crédito aceitos"]
+  }
+}
